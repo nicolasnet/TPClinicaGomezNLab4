@@ -1,1 +1,118 @@
-<p>registro works!</p>
+<br><br>
+
+<div class="container">
+  <main>
+    
+
+    <div class="row-center">    
+     
+        <div >
+          <div class="text-center">     
+            <p class="text-muted">(Todos los campos son obligatorios)</p>    
+          </div>
+            <form class="needs-validation" [formGroup]="forma" (ngSubmit)="NuevoRegistro()">
+
+                    <div class="row g-3">
+                      <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Nombre</mat-label>
+                          <input matInput placeholder="Nombre" formControlName="nombre">
+                          <mat-icon matSuffix>person</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('nombre').errors?.required && forma.get('nombre').touched">El nombre es requerido</mat-error>
+                        </mat-form-field>                    
+                      </div>
+                  
+                      <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Apellido</mat-label>
+                          <input matInput placeholder="Apellido" formControlName="apellido">
+                          <mat-icon matSuffix>person</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('apellido').errors?.required && forma.get('apellido').touched">El apellido es requerido</mat-error>
+                        </mat-form-field>                    
+                      </div>
+
+                      <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Edad</mat-label>
+                          <input type="number" matInput placeholder="0" formControlName="edad">
+                          <mat-icon matSuffix>cake</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('edad').errors?.required && forma.get('edad').touched">La edad es requerida</mat-error>
+                        </mat-form-field>                    
+                      </div>
+
+                      <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                          <mat-label>DNI</mat-label>
+                          <input type="number" matInput placeholder="DNI" formControlName="DNI">
+                          <mat-icon matSuffix>perm_identity</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('DNI').errors?.required && forma.get('DNI').touched">El DNI es requerido</mat-error>
+                          <mat-error class="invalid" *ngIf="forma.get('DNI').errors?.max && forma.get('DNI').touched">El dni debe ser de 8 digitos maximo</mat-error>
+                        </mat-form-field>                    
+                      </div>
+                    </div>
+       
+
+                    <div class="row g-3">
+                      <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Obra Social</mat-label>
+                          <input matInput placeholder="Obra Social" formControlName="OS">
+                          <mat-icon matSuffix>local_hospital</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('OS').errors?.required && forma.get('OS').touched">La Obra Social es requerida</mat-error>
+                        </mat-form-field>                    
+                      </div>
+                  
+                      <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Email</mat-label>
+                          <input matInput placeholder="example@example.com" formControlName="email">
+                          <mat-icon matSuffix>email</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('email').errors?.required && forma.get('email').touched">El email es requerido</mat-error>
+                          <mat-error class="invalid" *ngIf="forma.get('email').errors?.email && forma.get('email').touched">No posee formato de Email</mat-error>
+                        </mat-form-field>                    
+                      </div>
+
+                      <div class="col-sm-4">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Contraseña</mat-label>
+                          <input type="password" matInput placeholder="" formControlName="password">
+                          <mat-icon matSuffix>lock</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('password').errors?.required && forma.get('password').touched">La contraseña es requerida</mat-error>
+                        </mat-form-field>                    
+                      </div>
+                    </div>
+
+
+                    <div class="row g-3">
+                      <div class="col-sm-6">                        
+                          <mat-label>Imagen de frente</mat-label>                          
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es" formControlName="imgFrente">
+                            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                          </div>                          
+                          <mat-error class="invalid" *ngIf="forma.get('imgFrente').errors?.required && forma.get('imgFrente').touched">La imagen de frente es requerida</mat-error>                                
+                      </div>
+                  
+                      <div class="col-sm-6 ">                        
+                        <mat-label>Imagen de perfil</mat-label>
+                        <br>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="customFileLang" lang="es" formControlName="imgPerfil">
+                          <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                        </div>                        
+                        <mat-error class="invalid" *ngIf="forma.get('imgPerfil').errors?.required && forma.get('imgPerfil').touched">La imagen de perfil es requerida</mat-error>                              
+                      </div>
+                    </div>
+
+                    
+
+                <hr class="my-4">
+               
+                  <button mat-raised-button color="accent" class="w-100" type="submit" [disabled]="forma.invalid">Registrarse</button>
+               
+            </form>
+        </div>
+    </div>
+  </main>
+</div>
+

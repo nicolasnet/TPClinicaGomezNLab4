@@ -1,0 +1,9 @@
+.texto{
+    color: whitesmoke;
+}
+.texto:hover{
+ color: powderblue;
+}
+button:hover{
+    color: powderblue;
+}

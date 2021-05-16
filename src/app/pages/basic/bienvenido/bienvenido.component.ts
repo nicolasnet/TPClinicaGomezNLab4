@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BienvenidoComponent implements OnInit {
 
-  constructor() { }
+  iniciado: boolean
+
+  constructor() {
+ 
+   }
 
   ngOnInit(): void {
   }
+
 
 }
