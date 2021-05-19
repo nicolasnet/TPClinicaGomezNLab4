@@ -53,7 +53,7 @@
        
 
                     <div class="row g-3">
-                      <div class="col-sm-4">
+                      <div class="col-sm-6">
                         <mat-form-field appearance="outline">
                           <mat-label>Obra Social</mat-label>
                           <input matInput placeholder="Obra Social" formControlName="OS">
@@ -62,7 +62,7 @@
                         </mat-form-field>                    
                       </div>
                   
-                      <div class="col-sm-4">
+                      <div class="col-sm-6">
                         <mat-form-field appearance="outline">
                           <mat-label>Email</mat-label>
                           <input matInput placeholder="example@example.com" formControlName="email">
@@ -72,7 +72,11 @@
                         </mat-form-field>                    
                       </div>
 
-                      <div class="col-sm-4">
+                      
+                    </div>
+
+                    <div class="row g-3">
+                      <div class="col-sm-6">
                         <mat-form-field appearance="outline">
                           <mat-label>Contraseña</mat-label>
                           <input type="password" matInput placeholder="" formControlName="password">
@@ -80,15 +84,23 @@
                           <mat-error class="invalid" *ngIf="forma.get('password').errors?.required && forma.get('password').touched">La contraseña es requerida</mat-error>
                         </mat-form-field>                    
                       </div>
+                      <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Repetir Contraseña</mat-label>
+                          <input type="password" matInput placeholder="" formControlName="password2">
+                          <mat-icon matSuffix>lock</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('password2').errors?.required && forma.get('password2').touched">La contraseña es requerida</mat-error>
+                          <mat-error class="invalid" *ngIf="errorIngreso">Las contraseñas no coinciden</mat-error>
+                        </mat-form-field>                    
+                      </div>
                     </div>
-
 
                     <div class="row g-3">
                       <div class="col-sm-6">                        
                           <mat-label>Imagen de frente</mat-label>                          
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang" lang="es" formControlName="imgFrente">
-                            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                            <input type="file" class="custom-file-input" id="imgFrente" lang="es" formControlName="imgFrente">
+                            <label class="custom-file-label" for="imgFrente">Seleccionar Archivo</label>
                           </div>                          
                           <mat-error class="invalid" *ngIf="forma.get('imgFrente').errors?.required && forma.get('imgFrente').touched">La imagen de frente es requerida</mat-error>                                
                       </div>
@@ -97,8 +109,8 @@
                         <mat-label>Imagen de perfil</mat-label>
                         <br>
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="customFileLang" lang="es" formControlName="imgPerfil">
-                          <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                          <input type="file" class="custom-file-input" id="imgPerfil" lang="es" formControlName="imgPerfil">
+                          <label class="custom-file-label" for="imgPerfil">Seleccionar Archivo</label>
                         </div>                        
                         <mat-error class="invalid" *ngIf="forma.get('imgPerfil').errors?.required && forma.get('imgPerfil').touched">La imagen de perfil es requerida</mat-error>                              
                       </div>

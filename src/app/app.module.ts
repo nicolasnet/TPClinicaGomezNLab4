@@ -19,6 +19,7 @@ import { LoginComponent } from './pages/basic/login/login.component';
 import { RegistroComponent } from './pages/basic/registro/registro.component';
 import { NavbarComponent } from './pages/basic/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmailVerificationComponent } from './pages/basic/email-verification/email-verification.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ErrorComponent,
     LoginComponent,
     RegistroComponent,
-    NavbarComponent
+    NavbarComponent,
+    EmailVerificationComponent
   ],
   imports: [
     BrowserModule,

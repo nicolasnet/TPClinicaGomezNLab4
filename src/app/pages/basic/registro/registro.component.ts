@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Router } from '@angular/router';
+import { User } from 'src/app/clases/user';
+import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 
 @Component({
   selector: 'app-registro',
@@ -9,10 +12,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class RegistroComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
   public forma: FormGroup;
+  
+  errorIngreso=false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public firebaseService: AuthFirebaseService, private router: Router) { }
 
   ngOnInit(): void {
     this.forma = this.fb.group({
@@ -23,10 +27,13 @@ export class RegistroComponent implements OnInit {
       'email': ['', [Validators.email, Validators.required]],
       'OS': ['', Validators.required],
       'password': ['', Validators.required],
+      'password2': ['', Validators.required],
       'imgFrente': ['', Validators.required],
       'imgPerfil': ['', Validators.required],
     });
   }
+
+  
   
   private async spaceValidator(control: AbstractControl): Promise<object>{
     console.log("entra en spaceControl");
@@ -47,18 +54,31 @@ export class RegistroComponent implements OnInit {
   }
 
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
+  async NuevoRegistro(){
+    
+    if(this.forma.get('password').value == this.forma.get('password2').value){
+      this.errorIngreso = false;
+      try {
+        const user = await this.firebaseService.SignUp(this.forma.get('email').value, this.forma.get('password').value);
+        if (user) {
+          this.checkUserIsVerified(user);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }else{
+      this.errorIngreso = true;
     }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-
-
-
-  NuevoRegistro(){
-
+  
+  private checkUserIsVerified(user: User) {
+    if (user && user.emailVerified) {
+      this.router.navigate(['/']);
+      localStorage.setItem('usuario',this.forma.get('email').value)
+    } else if (user) {
+      this.router.navigate(['/verificacion-email']);
+    } else {
+      this.router.navigate(['/registro']);
+    }
   }
-
 }
