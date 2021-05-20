@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 })
 export class EmailVerificationComponent implements OnDestroy {
 
-  public user$: any;
+  public user$: Observable<any> = this.authSvc.firebaseAuth.user;
 
   constructor(private authSvc: AuthFirebaseService) {}
 

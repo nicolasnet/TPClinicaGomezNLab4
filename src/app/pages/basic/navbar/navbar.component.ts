@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 
 
 @Component({
@@ -9,8 +11,9 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   currentNavItem: string;
+  public user$: Observable<any> = this.authSvc.firebaseAuth.user;
 
-  constructor(private navegador: Router) {
+  constructor(private navegador: Router, private authSvc: AuthFirebaseService) {
     this.currentNavItem = "prueba1"
    }
 
@@ -19,6 +22,11 @@ export class NavbarComponent implements OnInit {
 
   Navegar(ruta: string){
     this.navegador.navigate([ruta]);
+  }
+
+  Desconectarse(){
+    this.authSvc.LogOut();
+    this.Navegar("");
   }
 
   

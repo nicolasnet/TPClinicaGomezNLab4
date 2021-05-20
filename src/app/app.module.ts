@@ -4,6 +4,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
@@ -20,6 +22,8 @@ import { RegistroComponent } from './pages/basic/registro/registro.component';
 import { NavbarComponent } from './pages/basic/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmailVerificationComponent } from './pages/basic/email-verification/email-verification.component';
+import { LoadingComponent } from './pages/basic/loading/loading.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { EmailVerificationComponent } from './pages/basic/email-verification/ema
     LoginComponent,
     RegistroComponent,
     NavbarComponent,
-    EmailVerificationComponent
+    EmailVerificationComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,9 @@ import { EmailVerificationComponent } from './pages/basic/email-verification/ema
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatSelectModule
 
   ],
   providers: [],

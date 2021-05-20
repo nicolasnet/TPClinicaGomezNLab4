@@ -7,6 +7,11 @@ mat-form-field{
   width: 100%;
 }
 
+.invalid{
+  color: red;
+}
+
+
 .custom-file {
   position: relative;
   display: inline-block;

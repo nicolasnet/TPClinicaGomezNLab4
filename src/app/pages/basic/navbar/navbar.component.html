@@ -18,10 +18,17 @@
         </form> -->
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2" (click)="Navegar('login')">Login</button>
-          <button type="button" class="btn btn-warning" (click)="Navegar('registro')">Registro</button>
-          
+          <div *ngIf="user$ | async as user; else login">           
+            <button type="button" mat-stroked-button color="warn" (click)="Desconectarse()" *ngIf="user">Desconectarse</button>            
+              <a> {{ user?.email }}</a>
+          </div>
+
+          <ng-template #login>
+            <button type="button" class="btn btn-outline-light me-2" (click)="Navegar('login')">Login</button>
+            <button type="button" class="btn btn-warning" (click)="Navegar('registro')">Registro</button>
+          </ng-template>
         </div>
+
       </div>
     </div>
 </header>

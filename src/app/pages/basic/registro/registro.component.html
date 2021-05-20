@@ -3,14 +3,17 @@
 <div class="container">
   <main>
     
+    
 
-    <div class="row-center">    
-     
-        <div >
-          <div class="text-center">     
+    <div class="row-center text-center">    
+          <button mat-stroked-button color="primary" (click)="Mostrar('paciente')" *ngIf="!muestra">Paciente</button>
+            <button mat-stroked-button color="primary" (click)="Mostrar('especialista')" *ngIf="!muestra">Especialista</button>
+        <div *ngIf="muestra">
+          <div class="text-center">
+            
             <p class="text-muted">(Todos los campos son obligatorios)</p>    
           </div>
-            <form class="needs-validation" [formGroup]="forma" (ngSubmit)="NuevoRegistro()">
+            <form class="needs-validation" [formGroup]="forma" (ngSubmit)="NuevoRegistro()" >
 
                     <div class="row g-3">
                       <div class="col-sm-3">
@@ -37,6 +40,7 @@
                           <input type="number" matInput placeholder="0" formControlName="edad">
                           <mat-icon matSuffix>cake</mat-icon>
                           <mat-error class="invalid" *ngIf="forma.get('edad').errors?.required && forma.get('edad').touched">La edad es requerida</mat-error>
+                          <mat-error class="invalid" *ngIf="forma.get('edad').errors?.min || forma.get('edad').errors?.max && forma.get('edad').touched">Debe ser entre 16 y 99</mat-error>
                         </mat-form-field>                    
                       </div>
 
@@ -89,22 +93,12 @@
                           <mat-label>Repetir Contraseña</mat-label>
                           <input type="password" matInput placeholder="" formControlName="password2">
                           <mat-icon matSuffix>lock</mat-icon>
-                          <mat-error class="invalid" *ngIf="forma.get('password2').errors?.required && forma.get('password2').touched">La contraseña es requerida</mat-error>
-                          <mat-error class="invalid" *ngIf="errorIngreso">Las contraseñas no coinciden</mat-error>
+                          <mat-error class="invalid" *ngIf="forma.get('password2').errors?.required && forma.get('password2').touched">La contraseña es requerida</mat-error>                          
                         </mat-form-field>                    
                       </div>
-                    </div>
+                    </div>              
 
-                    <div class="row g-3">
-                      <div class="col-sm-6">                        
-                          <mat-label>Imagen de frente</mat-label>                          
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imgFrente" lang="es" formControlName="imgFrente">
-                            <label class="custom-file-label" for="imgFrente">Seleccionar Archivo</label>
-                          </div>                          
-                          <mat-error class="invalid" *ngIf="forma.get('imgFrente').errors?.required && forma.get('imgFrente').touched">La imagen de frente es requerida</mat-error>                                
-                      </div>
-                  
+                    <div class="row g-3">                                        
                       <div class="col-sm-6 ">                        
                         <mat-label>Imagen de perfil</mat-label>
                         <br>
@@ -114,13 +108,43 @@
                         </div>                        
                         <mat-error class="invalid" *ngIf="forma.get('imgPerfil').errors?.required && forma.get('imgPerfil').touched">La imagen de perfil es requerida</mat-error>                              
                       </div>
+
+                      <div class="col-sm-6" *ngIf="paciente">                        
+                        <mat-label>Imagen de frente</mat-label>                          
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imgFrente" lang="es" formControlName="imgFrente">
+                          <label class="custom-file-label" for="imgFrente">Seleccionar Archivo</label>
+                        </div>                          
+                        <mat-error class="invalid" *ngIf="forma.get('imgFrente').errors?.required && forma.get('imgFrente').touched">La imagen de frente es requerida</mat-error>                                
+                      </div>
+
+                      <div class="col-sm-6" *ngIf="especialista">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Especialidad</mat-label>
+                          <mat-select id="especialidad" formControlName="especialidad">
+                            <mat-option *ngFor="let especialidad of listaEspecialidades" [value]="especialidad.nombre">{{especialidad.nombre}}</mat-option>
+                          </mat-select>
+                          <mat-error class="invalid" *ngIf="forma.get('especialidad').errors?.required && forma.get('especialidad').touched">La especialidad es requerida</mat-error>
+                        </mat-form-field>
+<!-- 
+                        <mat-form-field appearance="outline">
+                          <mat-label>Especialidad</mat-label>
+                          <input type="text" matInput placeholder="" formControlName="especialidad">
+                          <mat-icon matSuffix>lock</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('especialidad').errors?.required && forma.get('especialidad').touched">La especialidad es requerida</mat-error>
+                        </mat-form-field>                     -->
+                      </div>
+
                     </div>
 
-                    
 
-                <hr class="my-4">
+                <hr class="my-4">               
                
-                  <button mat-raised-button color="accent" class="w-100" type="submit" [disabled]="forma.invalid">Registrarse</button>
+                <button mat-raised-button color="accent" class="w-100" type="submit" [disabled]="forma.invalid">Registrarse</button>
+                
+                <div class="text-center">
+                  <small class="invalid" *ngIf="errorIngreso">Las contraseñas no coinciden</small>  
+                </div>
                
             </form>
         </div>
