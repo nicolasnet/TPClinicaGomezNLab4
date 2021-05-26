@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/clases/user';
 import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
+import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,13 @@ export class LoginComponent implements OnInit {
   errorIngreso=false;
   emailIngreso: string = "";
   contraIngreso: string = "";
+  listaUsuarios: any[];
 
-  constructor(public firebaseService: AuthFirebaseService, private router: Router) { }
+  constructor(public firebaseService: AuthFirebaseService, private router: Router, private usuariosFire: UsuariosFirebaseService) { 
+    this.usuariosFire.getAll().subscribe(listado =>{
+         this.listaUsuarios=listado;
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -27,13 +33,12 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('usuario', email);
     } catch (error) {
       this.router.navigate(['/registro']);
-      console.log(error);
-      
+      console.log(error);     
     }
   }
 
   private checkUserIsVerified(user: User) {
-    console.log(user.emailVerified +" "+ user)
+    
     if (user && user.emailVerified) {
       this.isSignedIn = true;
       this.router.navigate(['/']);
@@ -46,7 +51,6 @@ export class LoginComponent implements OnInit {
 
 
   CompletaIngreso(){
-    console.log("entro a completar");
     this.emailIngreso= "admin@admin.com";
     this.contraIngreso = "123456";
   }

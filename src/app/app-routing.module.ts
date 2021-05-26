@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'verificacion-email', component: EmailVerificationComponent},
+  { path: 'secciones', loadChildren: () => import('./secciones/secciones.module').then(m => m.SeccionesModule) },
   { path: '', component: BienvenidoComponent},
   { path: '**', component: ErrorComponent}
 ];

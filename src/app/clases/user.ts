@@ -1,4 +1,6 @@
-export type Roles = 'SUSCRIPTOR' | 'EDITOR' | 'ADMIN';
+import { Especialidad } from "./especialidad";
+
+export type Roles = 'paciente' | 'especialista' | 'admin';
 
 export class User {
     uid: string;
@@ -8,4 +10,18 @@ export class User {
     password?: string;
     photoURL?: string;
     role?: Roles;
+    edad?: number;
+    nombre?: string;
+    apellido?: string;
+    dni?: number;
+    os?: string;
+    imgFrente?: File;
+    imgPerfil?: File;
+    especialidad?: Array<Especialidad>;
+    verificacionEspec?: boolean;
+    id?: string;
+
+    constructor(){
+        this.especialidad = new Array<Especialidad>();
+    }
 }
