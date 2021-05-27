@@ -22,6 +22,14 @@ export class UsuariosFirebaseService {
   async obtenerID(email: string){
     await this.db.collection('/usuarios').ref.where('email', '==', email).get().then((responce)=>{
       this.id = responce.docs[0].id;
+      console.log(responce.docs[0].data()["role"]);
+    });
+  }
+
+  async obtenerRole(email: string){
+    await this.db.collection('/usuarios').ref.where('email', '==', email).get().then((responce)=>{
+      this.id = responce.docs[0].data()["role"];
+      console.log(responce.docs[0].data()["role"]);
     });
   }
 

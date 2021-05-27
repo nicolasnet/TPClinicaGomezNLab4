@@ -11,6 +11,12 @@ table {
     width: 16%;
   }
 
-  button{
+  .btnHabilitar{
     width: 100%;
+  }
+
+  .botonAgregar{
+    color:salmon;
+    margin-left: 0.5%;
+    margin-top: 0.5%;
   }

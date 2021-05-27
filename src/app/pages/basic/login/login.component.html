@@ -1,28 +1,61 @@
+<body class="text-center">    
+  <main class="form-signin">
+    <form>
+      <img src="../../../../assets/Imagenes/person.png">
+      <h1 class="h3 mb-3 fw-normal">Ingrese sus datos</h1>
 
-<body class="text-center">
-    
-<main class="form-signin">
-  <form>
-    <img src="../../../../assets/Imagenes/person.png">
-    <h1 class="h3 mb-3 fw-normal">Ingrese sus datos</h1>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value={{emailIngreso}} #email>
+        <label for="floatingInput">Email</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" value={{contraIngreso}} #password>
+        <label for="floatingPassword">Contraseña</label>
+      </div>
 
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value={{emailIngreso}} #email>
-      <label for="floatingInput">Email</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" value={{contraIngreso}} #password>
-      <label for="floatingPassword">Contraseña</label>
-    </div>
+      <div class="checkbox mb-3">
+        <!-- <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label> -->
+      </div>
+      <button mat-raised-button color="primary" (click)="OnSignIn(email.value, password.value)" class="w-100"><mat-icon>input</mat-icon> Ingresar </button>
+    </form>
+    <br>
 
-    <div class="checkbox mb-3">
-      <!-- <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label> -->
-    </div>
-    <button mat-raised-button color="primary" (click)="OnSignIn(email.value, password.value)" class="w-100"><mat-icon>input</mat-icon> Ingresar </button>
-  </form>
-</main>   
+    <div class="botonesOcultos" *ngIf="mostrar">
+      <button mat-mini-fab color="primary">
+        <mat-icon>person</mat-icon>1
+      </button>
+      <button mat-mini-fab color="primary">
+        <mat-icon>person</mat-icon>2
+      </button>
+      <br>
+      <button mat-mini-fab color="accent">
+        <mat-icon>local_hospital</mat-icon>1
+      </button>
+      <button mat-mini-fab color="accent">
+        <mat-icon>local_hospital</mat-icon>2
+      </button>
+      <br>
+      <button mat-mini-fab color="">
+        adm 1
+      </button>
+      <button mat-mini-fab color="">
+        adm 2
+      </button>
+    </div>     
+
+  </main>
+  <div class="botonMostrar" >
+    <button mat-mini-fab color="warn" (click)="Mostrar()" *ngIf="!mostrar">
+      <mat-icon>lock</mat-icon>
+    </button>
+    <button mat-mini-fab color="warn" (click)="Mostrar()" *ngIf="mostrar">
+      <mat-icon>lock_open</mat-icon>
+    </button>
+    <br>
+    <label class="text-muted">Login</label>
+  </div>
   
-
-<div id="shimai-world" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 2147483647; pointer-events: none; background: transparent;"></div></body>
+  <!-- <div id="shimai-world" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 2147483647; pointer-events: none; background: transparent; color: red;"> Hola probando</div> -->
+</body>

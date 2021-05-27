@@ -36,6 +36,13 @@ body {
   border-top-right-radius: 0;
 }
 
+.botonMostrar{  
+  position: fixed;
+  bottom: 3%;
+  left: 3%;
+
+}
+
 img{
   width: 100px;
   height: 100px;

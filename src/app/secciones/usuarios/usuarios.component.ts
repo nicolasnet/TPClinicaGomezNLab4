@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnChanges, OnInit, ViewChild } from '@angular/
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 import { User } from 'src/app/clases/user';
 import { EspecialidadesFireService } from 'src/app/services/especialidades-fire.service';
 import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.service';
@@ -20,7 +21,7 @@ export class UsuariosComponent implements AfterViewInit  {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private usuariosService: UsuariosFirebaseService ) {
+  constructor(private usuariosService: UsuariosFirebaseService, private router: Router ) {
     
     this.usuariosService.getAll().subscribe(listado =>{
         
@@ -38,14 +39,14 @@ export class UsuariosComponent implements AfterViewInit  {
     
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
+  //   if (this.dataSource.paginator) {
+  //     this.dataSource.paginator.firstPage();
+  //   }
+  // }
 
   async habilitar(habilito: boolean, email: string){
     await this.usuariosService.obtenerID(email);
@@ -53,6 +54,10 @@ export class UsuariosComponent implements AfterViewInit  {
     
   }
   
+  Navegar(ruta: string){
+    this.router.navigate([ruta]);
+
+  }
 
 
 }
