@@ -40,13 +40,15 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private checkUserIsVerified(user: User) {
+  private async checkUserIsVerified(user: User) {
     
     if (user && user.emailVerified) {
       this.isSignedIn = true;
-      let role = this.usuariosFire.obtenerRole(user.email)
-      console.log(role);
-      this.eventUserLogin.emit(role)      
+      await this.usuariosFire.obtenerRole(user.email)
+      
+      let role = this.usuariosFire.role;
+      console.log("el Role que loguea es: "+role);
+      this.eventUserLogin.emit(role);
       this.router.navigate(['/']);
     } else if (user) {
       this.router.navigate(['/verificacion-email']);

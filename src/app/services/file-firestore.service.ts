@@ -11,6 +11,8 @@ export class FileFirestoreService {
 
   private filePath: any;
   private downloadURL: Observable<string>;
+  imgUrl: string;
+
 
   constructor(
     private storage: AngularFireStorage
@@ -31,7 +33,27 @@ export class FileFirestoreService {
   }
 
   public downloadImgage(){
-    return this.storage.storage.refFromURL("gs://gomezn-tpfinal-clinica.appspot.com/images/nuevo4@nuevo.com-imgFrente.jpg")
+    // let storage1 = "gomezn-tpfinal-clinica.appspot.com";
+    let storageRef = this.storage.ref("gomezn-tpfinal-clinica.appspot.com");
+    let imagesRef = storageRef.child('images');
+    storageRef.child('images/nicogomez27@gmail.com-imgPerfil.jpg').getDownloadURL().then(function(url){
+      return url;
+    })
+
   }
 
+     //Tarea para subir archivo
+     public tareaCloudStorage(nombreArchivo: string, datos: any) {
+      return this.storage.upload(nombreArchivo, datos);
+    }
+  
+    //Referencia del archivo
+    public referenciaCloudStorage(nombreArchivo: string) {
+      return this.storage.ref(nombreArchivo);
+    }
+
+
+
+
 }
+export const MEDIA_STORAGE_PATH = `/images/`;

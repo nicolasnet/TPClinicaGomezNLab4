@@ -1,0 +1,32 @@
+<div class="card mt-5" *ngIf="usuario; else loading">
+    <div class="card-body text-center">
+      <div *ngIf="url" >
+        <img [src]="url">
+      </div>
+        
+      <h3 class="card-title text-center">Mis Datos</h3>
+      <div class="form-group mt-2">
+        <p class="text-center">
+          Nombre:  <strong>{{usuario.nombre}}</strong>
+          <br>
+          Apellido:  <strong>{{usuario.apellido}}</strong>
+          <br>
+          Edad:  <strong>{{usuario.edad}}</strong>
+          <br>
+          DNI:  <strong>{{usuario.dni}}</strong>
+          <br>
+          Email:  <strong>{{usuario.email}}</strong>
+        </p>
+        
+      </div>
+      <div class="form-group text-center mt-5">
+        <!-- <button mat-raised-button color="primary" (click)="onSendEmail()">
+          Reenviar email de verificación
+        </button> -->
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>

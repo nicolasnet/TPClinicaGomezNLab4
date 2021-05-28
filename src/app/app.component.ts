@@ -11,6 +11,7 @@ export class AppComponent {
 
   CargarRoleDelLogin(role: string){
     this.roleSeleccionado = role;
+    console.log("entra en funcion app component")
   }
 
 }

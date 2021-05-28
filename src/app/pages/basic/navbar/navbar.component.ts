@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,11 +14,14 @@ import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 })
 export class NavbarComponent implements OnInit {
   
+  @Input() roleLogueado: string
+
   public user$: Observable<User> = this.authSvc.firebaseAuth.user;
   usuario: User;
 
   constructor(private navegador: Router, private authSvc: AuthFirebaseService) {
-    console.log(this.user$)
+    // console.log(this.user$)
+    console.log("navbar Role: " + this.roleLogueado)
    }
 
   ngOnInit(): void {

@@ -12,6 +12,8 @@ export class UsuariosFirebaseService {
   usuariosRef: AngularFirestoreCollection<User>;
   usuarios:Observable<any[]>;
   id: string;
+  role: string;
+  usuarioSeleccionado: any;
 
   constructor(private db: AngularFirestore) {
     this.usuariosRef=db.collection<any>(this.dbpath, ref => ref.orderBy('apellido'));
@@ -22,14 +24,21 @@ export class UsuariosFirebaseService {
   async obtenerID(email: string){
     await this.db.collection('/usuarios').ref.where('email', '==', email).get().then((responce)=>{
       this.id = responce.docs[0].id;
-      console.log(responce.docs[0].data()["role"]);
+      
     });
   }
 
   async obtenerRole(email: string){
     await this.db.collection('/usuarios').ref.where('email', '==', email).get().then((responce)=>{
-      this.id = responce.docs[0].data()["role"];
+      this.role = responce.docs[0].data()["role"];
       console.log(responce.docs[0].data()["role"]);
+    });
+  }
+
+  async obtenerUsuario(email: string){
+    await this.db.collection('/usuarios').ref.where('email', '==', email).get().then((responce)=>{
+      this.usuarioSeleccionado = responce.docs[0].data();
+      // console.log(responce.docs[0].data());
     });
   }
 

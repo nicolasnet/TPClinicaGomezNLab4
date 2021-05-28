@@ -176,7 +176,7 @@ export class RegistroComponent implements OnInit {
   }
 
   public subirArchivos() {
-    this.firebaseStorage.uploadImage(this.imgPerfil, this.forma.get('email').value + "-imgPerfil.jpg");
+     this.firebaseStorage.uploadImage(this.imgPerfil, this.forma.get('email').value + "-imgPerfil.jpg");
     if(this.paciente){
       this.firebaseStorage.uploadImage(this.imgFrente, this.forma.get('email').value + "-imgFrente.jpg");
     }
