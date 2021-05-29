@@ -25,6 +25,7 @@ export class RegistroComponent implements OnInit {
   imgPerfil: any;
   imgFrente: any;
   disabled = true;
+  siteKey: string;
 
   pruebaIMG:any;
 
@@ -34,7 +35,7 @@ export class RegistroComponent implements OnInit {
     private especialidadesService: EspecialidadesFireService,
     private usuarioService: UsuariosFirebaseService,
     private firebaseStorage: FileFirestoreService) {
-
+      this.siteKey = '6LdvifwaAAAAAD3uKrRZK3ZzTbAkGezZLRrI7yZk';
       this.usuarioService.obtenerID("hol@hol.com");
 
       this.especialidadesService.getAll().subscribe(listado =>{
@@ -53,11 +54,8 @@ export class RegistroComponent implements OnInit {
       'email': ['', [Validators.email, Validators.required]],      
       'password': ['', Validators.required],
       'password2': ['', Validators.required],
-      'imgPerfil': ['', Validators.required],      
-
-      // 'OS': ['', Validators.required],
-      // 'imgFrente': ['', Validators.required],
-      // 'especialidad': ['', Validators.required],
+      'imgPerfil': ['', Validators.required],
+      'reRaptcha': ['', Validators.required],
     });
   }
 

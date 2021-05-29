@@ -19,6 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { LoadingComponent } from '../pages/basic/loading/loading.component';
@@ -41,7 +42,8 @@ const materialModule =[
   MatPaginatorModule,
   MatSortModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatGridListModule
 ]
 
 @NgModule({

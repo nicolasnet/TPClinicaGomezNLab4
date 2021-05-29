@@ -2,14 +2,18 @@
   <main>
     <div class="row-center text-center">
       <p class="text-muted">Elige como quieres registrarte, tene en cuenta que las cuentas de especialistas deben ser aprobadas por el Admin antes de poder loguearse.</p>
-          <button mat-stroked-button color="primary" (click)="Mostrar('paciente')" *ngIf="!muestra">Paciente</button>
-          <button mat-stroked-button color="primary" (click)="Mostrar('especialista')" *ngIf="!muestra">Especialista</button>
+                    
           <button mat-stroked-button color="primary" (click)="Mostrar('volver')" *ngIf="muestra">Cambiar elección</button>
+          <mat-grid-list cols="2" rowHeight="1:1.3" *ngIf="!muestra">
+            <mat-grid-tile><button class="botonFoto" (click)="Mostrar('paciente')" ><img src="../../../../assets/Imagenes/FotoPacienteRegistro.jpg" alt=""></button></mat-grid-tile>
+            <mat-grid-tile><button class="botonFoto" (click)="Mostrar('especialista')" ><img src="../../../../assets/Imagenes/FotoEspecialistaRegistroEdit.jpg" alt=""></button></mat-grid-tile>
+          </mat-grid-list>
+
         <div *ngIf="muestra">
           <div class="text-center">
             <p class="text-muted">(Todos los campos son obligatorios)</p>
           </div>
-            <form class="needs-validation" [formGroup]="forma" (ngSubmit)="NuevoRegistro()" >
+            <form class="needs-validation" [formGroup]="forma" (ngSubmit)="NuevoRegistro()">
 
                     <div class="row g-3">
                       <div class="col-sm-3">
@@ -138,6 +142,7 @@
                         <!-- <mat-chip-list aria-label="Fish selection" class="chip">
                           <mat-chip color="primary" selected (click)="habilitar()">Agregar Nueva especialidad</mat-chip>
                         </mat-chip-list> -->
+                        
                       </div>                      
 
                       <div class="col-sm-6" >
@@ -147,6 +152,17 @@
                           <mat-icon matSuffix>local_hospital</mat-icon>
                         </mat-form-field>
                       </div>
+                    </div>
+                    <br>
+                    
+                    <div class="row g-3">
+                      <div class="col-sm-4" ></div>
+                      <div class="col-sm-4" >
+                      <ngx-recaptcha2 [siteKey]="siteKey" formControlName="reRaptcha">
+                      
+                      </ngx-recaptcha2>
+                    </div>
+                    <div class="col-sm-4" ></div>
                     </div>
 
                 <hr class="my-4">

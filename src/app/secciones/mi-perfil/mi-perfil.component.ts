@@ -19,7 +19,7 @@ export class MiPerfilComponent implements OnInit {
 
   constructor(private authSvc: AuthFirebaseService, private usuarioService: UsuariosFirebaseService, private storageService: FileFirestoreService) {
     this.email = localStorage.getItem('usuario');
-    this.storageService.referenciaCloudStorage(MEDIA_STORAGE_PATH + "nicogomez27@gmail.com-imgPerfil.jpg")
+    this.storageService.referenciaCloudStorage(MEDIA_STORAGE_PATH + this.email+"-imgPerfil.jpg")
         .getDownloadURL().pipe(take(1)).subscribe(url => {
             this.url = url;
             console.log(this.url)

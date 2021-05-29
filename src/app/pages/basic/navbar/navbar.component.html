@@ -10,7 +10,7 @@
           </li>
           <li><a href="/secciones/usuarios" class="nav-link px-2 texto" *ngIf="user$ | async as user">Usuarios</a></li>
 
-          <li><a href="/secciones/misturnos" class="nav-link px-2 texto" >Mis turnos</a></li>
+          <li><a href="/secciones/misturnos" class="nav-link px-2 texto" *ngIf="user$ | async as user">Mis turnos</a></li>
 
           <!-- <li><a href="#" class="nav-link px-2 texto">Link 3</a></li>
           <li><a href="#" class="nav-link px-2 texto">Link 4</a></li> -->

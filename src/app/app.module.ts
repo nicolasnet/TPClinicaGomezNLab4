@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { NavbarComponent } from './pages/basic/navbar/navbar.component';
 import { EmailVerificationComponent } from './pages/basic/email-verification/email-verification.component';
 import { SharedModule } from './shared/shared.module';
 import { SeccionesModule } from './secciones/secciones.module';
+
 
 
 
@@ -43,7 +45,8 @@ import { SeccionesModule } from './secciones/secciones.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxCaptchaModule
 
   ],
   providers: [],

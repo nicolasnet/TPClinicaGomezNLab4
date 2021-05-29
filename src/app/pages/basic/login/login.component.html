@@ -23,24 +23,24 @@
     <br>
 
     <div class="botonesOcultos" *ngIf="mostrar">
-      <button mat-mini-fab color="primary">
+      <button mat-mini-fab color="primary" (click)="CompletaIngreso('paciente1')">
         <mat-icon>person</mat-icon>1
       </button>
-      <button mat-mini-fab color="primary">
+      <button mat-mini-fab color="primary" (click)="CompletaIngreso('paciente2')">
         <mat-icon>person</mat-icon>2
       </button>
       <br>
-      <button mat-mini-fab color="accent">
+      <button mat-mini-fab color="accent" (click)="CompletaIngreso('especialista1')">
         <mat-icon>local_hospital</mat-icon>1
       </button>
-      <button mat-mini-fab color="accent">
+      <button mat-mini-fab color="accent" (click)="CompletaIngreso('especialista2')">
         <mat-icon>local_hospital</mat-icon>2
       </button>
       <br>
-      <button mat-mini-fab color="">
+      <button mat-mini-fab color="" (click)="CompletaIngreso('adm1')">
         adm 1
       </button>
-      <button mat-mini-fab color="">
+      <button mat-mini-fab color="" (click)="CompletaIngreso('adm2')">
         adm 2
       </button>
     </div>     

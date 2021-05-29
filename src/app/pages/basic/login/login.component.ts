@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       await this.usuariosFire.obtenerRole(user.email)
       
       let role = this.usuariosFire.role;
+      localStorage.setItem('role', role);
       console.log("el Role que loguea es: "+role);
       this.eventUserLogin.emit(role);
       this.router.navigate(['/']);
@@ -58,9 +59,34 @@ export class LoginComponent implements OnInit {
   }
 
 
-  CompletaIngreso(){
-    this.emailIngreso= "admin@admin.com";
-    this.contraIngreso = "123456";
+  CompletaIngreso(ingreso: string){
+    switch(ingreso){
+      case "adm1":
+        this.emailIngreso= "nicogomez27@gmail.com";
+        this.contraIngreso = "123456";
+        break;
+      case "adm2":
+        this.emailIngreso= "niconetgomez@hotmail.com";
+        this.contraIngreso = "123456";
+        break;
+      case "paciente1":
+        this.emailIngreso= "nicoeesssgomez27@gmail.com";
+        this.contraIngreso = "123456";
+        break;
+      case "paciente2":
+        this.emailIngreso= "e@gmail.com";
+        this.contraIngreso = "123456";
+        break;
+      case "especialista1":
+        this.emailIngreso= "ca@gmail.com";
+        this.contraIngreso = "123456";
+        break;
+      case "especialista2":
+        this.emailIngreso= "se@gmail.com";
+        this.contraIngreso = "123456";
+        break;
+    }
+    
   }
 
   Mostrar(){
