@@ -10,20 +10,20 @@ import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.serv
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  @Output() eventUserLogin: EventEmitter<any> = new EventEmitter<any>();
-  
+    
   isSignedIn= false;
   errorIngreso=false;
   emailIngreso: string = "";
   contraIngreso: string = "";
   listaUsuarios: any[];
   mostrar = false;
+  usuarioLogueado;
+
 
   constructor(public firebaseService: AuthFirebaseService, private router: Router, private usuariosFire: UsuariosFirebaseService) { 
-    this.usuariosFire.getAll().subscribe(listado =>{
-         this.listaUsuarios=listado;
-    });
+    // this.usuariosFire.getAll().subscribe(listado =>{
+    //      this.listaUsuarios=listado;
+    // });
   }
 
   ngOnInit(): void {
@@ -36,21 +36,31 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('usuario', email);
     } catch (error) {
       this.router.navigate(['/registro']);
-      console.log(error);     
+      console.log(error);
     }
   }
 
   private async checkUserIsVerified(user: User) {
     
     if (user && user.emailVerified) {
-      this.isSignedIn = true;
-      await this.usuariosFire.obtenerRole(user.email)
-      
-      let role = this.usuariosFire.role;
-      localStorage.setItem('role', role);
-      console.log("el Role que loguea es: "+role);
-      this.eventUserLogin.emit(role);
-      this.router.navigate(['/']);
+      await this.usuariosFire.obtenerUsuario(user.email);
+      this.usuarioLogueado = this.usuariosFire.usuarioSeleccionado;
+      console.log(this.usuarioLogueado.role);
+      if(this.usuarioLogueado.role == 'especialista'){
+        console.log("entra en login para especialista");
+        if(!this.usuarioLogueado.verificacionEspec){
+          console.log("entra en login para especialista sin verificacion por Admin");
+          this.router.navigate(['/verificacion-especialista']);
+        }else{
+          localStorage.setItem('role', this.usuarioLogueado.role);
+          console.log("LOGIN: el Role que loguea es: "+this.usuarioLogueado.role);
+          this.router.navigate(['/']);
+        }
+      }else{
+        localStorage.setItem('role', this.usuarioLogueado.role);
+        console.log("LOGIN: el Role que loguea es: "+this.usuarioLogueado.role);
+        this.router.navigate(['/']);
+      }      
     } else if (user) {
       this.router.navigate(['/verificacion-email']);
     } else {
@@ -78,7 +88,7 @@ export class LoginComponent implements OnInit {
         this.contraIngreso = "123456";
         break;
       case "especialista1":
-        this.emailIngreso= "ca@gmail.com";
+        this.emailIngreso= "micaela.comelli25@gmail.com";
         this.contraIngreso = "123456";
         break;
       case "especialista2":
@@ -92,5 +102,4 @@ export class LoginComponent implements OnInit {
   Mostrar(){
     this.mostrar = !this.mostrar;
   }
-
 }

@@ -17,7 +17,7 @@ mat-form-field{
   display: inline-block;
   width: 100%;
   height: calc(2.25rem + 2px);
-  margin-bottom: 0;
+  margin-bottom: 4%;
 }
 
 .custom-file-input {

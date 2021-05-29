@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="card mt-5" *ngIf="user$ | async as user; else loading">
+    <div class="card-body">
+        <h3 class="card-title text-center">Gracias por registrarte!</h3>
+        <div class="form-group mt-2">
+        <p class="text-center">
+            Tu email de confirmacion fue acivado: <strong>{{ user?.email }}</strong>
+        </p>
+        <p class="text-center">
+            Pero tu cuenta como Especialista no fue habilitada por un Administrador.
+        </p>
+        </div>
+        
+    </div>
+</div>
+  
+  
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>

@@ -16,10 +16,10 @@ import { BienvenidoComponent } from './pages/basic/bienvenido/bienvenido.compone
 import { ErrorComponent } from './pages/basic/error/error.component';
 import { LoginComponent } from './pages/basic/login/login.component';
 import { RegistroComponent } from './pages/basic/registro/registro.component';
-import { NavbarComponent } from './pages/basic/navbar/navbar.component';
 import { EmailVerificationComponent } from './pages/basic/email-verification/email-verification.component';
 import { SharedModule } from './shared/shared.module';
 import { SeccionesModule } from './secciones/secciones.module';
+import { EspecialistaVerificationComponent } from './pages/basic/especialista-verification/especialista-verification.component';
 
 
 
@@ -31,8 +31,8 @@ import { SeccionesModule } from './secciones/secciones.module';
     ErrorComponent,
     LoginComponent,
     RegistroComponent,
-    NavbarComponent,
-    EmailVerificationComponent
+    EmailVerificationComponent,
+    EspecialistaVerificationComponent
   ],
   imports: [
     SharedModule,

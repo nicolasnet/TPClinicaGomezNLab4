@@ -61,6 +61,8 @@ export class AuthFirebaseService {
   LogOut(){
     this.firebaseAuth.signOut();
     localStorage.removeItem('user');
+    localStorage.removeItem('role');
+    localStorage.removeItem('usuario');
   }
 
   async sendVerificationEmail(): Promise<void> {

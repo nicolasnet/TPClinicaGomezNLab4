@@ -13,15 +13,14 @@ import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  
-  @Input() roleLogueado: string
 
   public user$: Observable<User> = this.authSvc.firebaseAuth.user;
+  public role: string = localStorage.getItem('role');
   usuario: User;
 
   constructor(private navegador: Router, private authSvc: AuthFirebaseService) {
     // console.log(this.user$)
-    console.log("navbar Role: " + this.roleLogueado)
+    console.log("navbar Role: " + this.role);
    }
 
   ngOnInit(): void {
@@ -33,6 +32,7 @@ export class NavbarComponent implements OnInit {
 
   Desconectarse(){
     this.authSvc.LogOut();
+    this.role = "";
     this.Navegar("");
   }
 

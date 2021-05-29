@@ -1,9 +1,11 @@
+<app-navbar></app-navbar>
 <div class="container">
   <main>
     <div class="row-center text-center">
       <p class="text-muted">Elige como quieres registrarte, tene en cuenta que las cuentas de especialistas deben ser aprobadas por el Admin antes de poder loguearse.</p>
                     
           <button mat-stroked-button color="primary" (click)="Mostrar('volver')" *ngIf="muestra">Cambiar elección</button>
+          <button mat-stroked-button color="accent" (click)="Mostrar('admin')" *ngIf="!muestra && role=='admin'"><mat-icon matSuffix>verified_user</mat-icon>Crear Usuario ADMIN</button>
           <mat-grid-list cols="2" rowHeight="1:1.3" *ngIf="!muestra">
             <mat-grid-tile><button class="botonFoto" (click)="Mostrar('paciente')" ><img src="../../../../assets/Imagenes/FotoPacienteRegistro.jpg" alt=""></button></mat-grid-tile>
             <mat-grid-tile><button class="botonFoto" (click)="Mostrar('especialista')" ><img src="../../../../assets/Imagenes/FotoEspecialistaRegistroEdit.jpg" alt=""></button></mat-grid-tile>
@@ -57,15 +59,6 @@
        
 
                     <div class="row g-3">
-                      <div class="col-sm-6" *ngIf="paciente">
-                        <mat-form-field appearance="outline">
-                          <mat-label>Obra Social</mat-label>
-                          <input matInput placeholder="Obra Social" formControlName="OS">
-                          <mat-icon matSuffix>local_hospital</mat-icon>
-                          <mat-error class="invalid" *ngIf="forma.get('OS').errors?.required && forma.get('OS').touched">La Obra Social es requerida</mat-error>
-                        </mat-form-field>                    
-                      </div>
-                  
                       <div class="col-sm-6">
                         <mat-form-field appearance="outline">
                           <mat-label>Email</mat-label>
@@ -75,35 +68,23 @@
                           <mat-error class="invalid" *ngIf="forma.get('email').errors?.email && forma.get('email').touched">No posee formato de Email</mat-error>
                         </mat-form-field>                    
                       </div>
-                      <div class="col-sm-3" *ngIf="especialista">
+
+                      <div class="col-sm-6" *ngIf="paciente">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Obra Social</mat-label>
+                          <input matInput placeholder="Obra Social" formControlName="OS">
+                          <mat-icon matSuffix>local_hospital</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('OS').errors?.required && forma.get('OS').touched">La Obra Social es requerida</mat-error>
+                        </mat-form-field>                    
+                      </div>
+                  
+                      
+                      <!-- <div class="col-sm-3" *ngIf="especialista">
                         
                           <mat-label class="text-muted">Recordar que el ADMIN debe autorizar tu cuenta de especialista.</mat-label>                          
                         
-                      </div>
+                      </div> -->
 
-                      
-                    </div>
-
-                    <div class="row g-3">
-                      <div class="col-sm-6">
-                        <mat-form-field appearance="outline">
-                          <mat-label>Contraseña</mat-label>
-                          <input type="password" matInput placeholder="" formControlName="password">
-                          <mat-icon matSuffix>lock</mat-icon>
-                          <mat-error class="invalid" *ngIf="forma.get('password').errors?.required && forma.get('password').touched">La contraseña es requerida</mat-error>
-                        </mat-form-field>                    
-                      </div>
-                      <div class="col-sm-6">
-                        <mat-form-field appearance="outline">
-                          <mat-label>Repetir Contraseña</mat-label>
-                          <input type="password" matInput placeholder="" formControlName="password2">
-                          <mat-icon matSuffix>lock</mat-icon>
-                          <mat-error class="invalid" *ngIf="forma.get('password2').errors?.required && forma.get('password2').touched">La contraseña es requerida</mat-error>                          
-                        </mat-form-field>                    
-                      </div>
-                    </div>              
-
-                    <div class="row g-3">
                       <div class="col-sm-6 ">
                         <mat-label>Imagen de perfil</mat-label>
                         <br>
@@ -120,30 +101,42 @@
                           <input type="file" class="custom-file-input" id="imgFrente" lang="es" formControlName="imgFrente" (change)="handleImgFrente($event)">
                           <label class="custom-file-label" for="imgFrente">Seleccionar Archivo</label>
                         </div>                          
-                        <mat-error class="invalid" *ngIf="forma.get('imgFrente').errors?.required && forma.get('imgFrente').touched">La imagen de frente es requerida</mat-error>                                
-                      </div>
+                        <mat-error class="invalid" *ngIf="forma.get('imgFrente').errors?.required && forma.get('imgFrente').touched">La imagen de frente es requerida</mat-error>                        
+                      </div>                     
+                    </div>
 
-                      <div class="col-sm-6" *ngIf="especialista">
+                    <div class="row g-3">
+                      <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Contraseña</mat-label>
+                          <input type="password" matInput placeholder="6 caracteres minimos" formControlName="password">
+                          <mat-icon matSuffix>lock</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('password').errors?.required && forma.get('password').touched">La contraseña es requerida</mat-error>
+                          <mat-error class="invalid" *ngIf="forma.get('password').errors?.minLength && forma.get('password').touched">La contraseña es requerida</mat-error>
+                        </mat-form-field>                    
+                      </div>
+                      <div class="col-sm-6">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Repetir Contraseña</mat-label>
+                          <input type="password" matInput placeholder="6 caracteres minimos" formControlName="password2">
+                          <mat-icon matSuffix>lock</mat-icon>
+                          <mat-error class="invalid" *ngIf="forma.get('password2').errors?.required && forma.get('password2').touched">La contraseña es requerida</mat-error>
+                          <mat-error class="invalid" *ngIf="forma.get('password2').errors?.minLength && forma.get('password2').touched">La contraseña es requerida</mat-error>
+                        </mat-form-field>                    
+                      </div>
+                    </div>              
+
+                    <div class="row g-3" *ngIf="especialista">                     
+
+                      <div class="col-sm-6" >
                         <mat-form-field appearance="outline">
                           <mat-label>Especialidad</mat-label>
                           <mat-select id="especialidad" formControlName="especialidad" multiple>
                             <mat-option *ngFor="let especialidad of listaEspecialidades" [value]="especialidad">{{especialidad.nombre}}</mat-option>
                           </mat-select>
                           <mat-error class="invalid" *ngIf="forma.get('especialidad').errors?.required && forma.get('especialidad').touched">La especialidad es requerida</mat-error>
-                        </mat-form-field>
+                        </mat-form-field>                        
                       </div>
-                    </div>
-
-                    <div class="row g-3" *ngIf="especialista">
-                      <div class="col-sm-3 ">
-
-                      </div>
-                      <div class="col-sm-3 ">
-                        <!-- <mat-chip-list aria-label="Fish selection" class="chip">
-                          <mat-chip color="primary" selected (click)="habilitar()">Agregar Nueva especialidad</mat-chip>
-                        </mat-chip-list> -->
-                        
-                      </div>                      
 
                       <div class="col-sm-6" >
                         <mat-form-field appearance="outline">
@@ -152,6 +145,7 @@
                           <mat-icon matSuffix>local_hospital</mat-icon>
                         </mat-form-field>
                       </div>
+
                     </div>
                     <br>
                     

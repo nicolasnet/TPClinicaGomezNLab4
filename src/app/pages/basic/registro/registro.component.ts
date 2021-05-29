@@ -28,6 +28,7 @@ export class RegistroComponent implements OnInit {
   siteKey: string;
 
   pruebaIMG:any;
+  role: any;
 
   constructor(private fb: FormBuilder,
     public firebaseService: AuthFirebaseService,
@@ -36,8 +37,8 @@ export class RegistroComponent implements OnInit {
     private usuarioService: UsuariosFirebaseService,
     private firebaseStorage: FileFirestoreService) {
       this.siteKey = '6LdvifwaAAAAAD3uKrRZK3ZzTbAkGezZLRrI7yZk';
-      this.usuarioService.obtenerID("hol@hol.com");
-
+      this.role = localStorage.getItem('role');
+      console.log(this.role);
       this.especialidadesService.getAll().subscribe(listado =>{
         
         this.listaEspecialidades=listado;
@@ -52,8 +53,8 @@ export class RegistroComponent implements OnInit {
       'edad': ['',[Validators.required, Validators.min(16), Validators.max(99)]],
       'dni': ['', [Validators.required, Validators.max(99999999)]],
       'email': ['', [Validators.email, Validators.required]],      
-      'password': ['', Validators.required],
-      'password2': ['', Validators.required],
+      'password': ['', [Validators.required, Validators.minLength(6)]],
+      'password2': ['', [Validators.required, Validators.minLength(6)]],
       'imgPerfil': ['', Validators.required],
       'reRaptcha': ['', Validators.required],
     });
@@ -135,6 +136,15 @@ export class RegistroComponent implements OnInit {
         this.especialista = true;
         this.paciente = false;
         break;
+      case "admin":
+        this.forma.removeControl("OS");
+        this.forma.removeControl("imgFrente");
+        this.forma.removeControl("especialidad");
+        this.forma.removeControl("especialidadNueva");
+        this.muestra=true;
+        this.especialista = false;
+        this.paciente = false;
+        break;
       case "volver":
         this.especialista = false;
         this.paciente = false;
@@ -156,8 +166,7 @@ export class RegistroComponent implements OnInit {
       usuarioNuevo.os = this.forma.get('OS').value;
       usuarioNuevo.imgFrente = this.forma.get('imgFrente').value;
       usuarioNuevo.role = "paciente";
-    }
-    if(this.especialista){      
+    }else if(this.especialista){      
       usuarioNuevo.especialidad = this.forma.get('especialidad').value;
       usuarioNuevo.role = "especialista";
       if(this.forma.get('especialidadNueva').value){
@@ -165,10 +174,13 @@ export class RegistroComponent implements OnInit {
         nueva.nombre = this.forma.get('especialidadNueva').value;
         usuarioNuevo.especialidad.push({'nombre': nueva.nombre});
         this.especialidadesService.create(nueva);
-        
+        usuarioNuevo.verificacionEspec = false;        
       }
       console.log(usuarioNuevo.especialidad);
+    }else{
+      usuarioNuevo.role = "admin"
     }
+    
 
     this.usuarioService.create(usuarioNuevo);
   }

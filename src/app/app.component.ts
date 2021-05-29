@@ -7,13 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Lab4ClinicaTPFinal-GomezN';
-  roleSeleccionado: string;
-
-  CargarRoleDelLogin(role: string){
-    this.roleSeleccionado = role;
-    console.log("entra en funcion app component")
-  }
-
 }
 
 

@@ -23,6 +23,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { LoadingComponent } from '../pages/basic/loading/loading.component';
+import { NavbarComponent } from '../pages/basic/navbar/navbar.component';
 
 const materialModule =[
   MatCardModule,
@@ -48,13 +49,15 @@ const materialModule =[
 
 @NgModule({
   declarations: [
-    LoadingComponent],
+    LoadingComponent,
+    NavbarComponent
+  ],
   imports: [
     CommonModule,
     SharedRoutingModule,
     materialModule
     
   ],
-  exports: [materialModule, LoadingComponent]
+  exports: [materialModule, LoadingComponent, NavbarComponent]
 })
 export class SharedModule { }

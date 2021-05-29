@@ -10,11 +10,13 @@ import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 export class EmailVerificationComponent implements OnDestroy {
 
   public user$: Observable<any> = this.authSvc.firebaseAuth.user;
+  emailEnviado: boolean;
 
   constructor(private authSvc: AuthFirebaseService) {}
 
   onSendEmail(): void {
     this.authSvc.sendVerificationEmail();
+    this.emailEnviado = true;
   }
 
   ngOnDestroy() {
