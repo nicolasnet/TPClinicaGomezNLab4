@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   private async checkUserIsVerified(user: User) {
-    
+    console.log("entra en chequeo de usuario")
     if (user && user.emailVerified) {
       await this.usuariosFire.obtenerUsuario(user.email);
       this.usuarioLogueado = this.usuariosFire.usuarioSeleccionado;

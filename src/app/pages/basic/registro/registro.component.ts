@@ -158,7 +158,7 @@ export class RegistroComponent implements OnInit {
 
     usuarioNuevo.nombre = this.toTitleCase(this.forma.get('nombre').value);
     usuarioNuevo.apellido = this.toTitleCase(this.forma.get('apellido').value);
-    usuarioNuevo.email = this.forma.get('email').value;
+    usuarioNuevo.email = this.forma.get('email').value.toLowerCase();
     usuarioNuevo.edad = this.forma.get('edad').value;
     usuarioNuevo.dni = this.forma.get('dni').value;
     usuarioNuevo.imgPerfil = this.forma.get('imgPerfil').value;
