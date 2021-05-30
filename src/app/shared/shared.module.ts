@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -25,7 +26,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { LoadingComponent } from '../pages/basic/loading/loading.component';
 import { NavbarComponent } from '../pages/basic/navbar/navbar.component';
 
-const materialModule =[
+const materialFormModule =[
   MatCardModule,
   MatButtonModule,
   MatCheckboxModule,
@@ -44,7 +45,9 @@ const materialModule =[
   MatSortModule,
   MatDialogModule,
   MatSelectModule,
-  MatGridListModule
+  MatGridListModule,
+  FormsModule,
+  ReactiveFormsModule
 ]
 
 @NgModule({
@@ -55,9 +58,9 @@ const materialModule =[
   imports: [
     CommonModule,
     SharedRoutingModule,
-    materialModule
+    materialFormModule
     
   ],
-  exports: [materialModule, LoadingComponent, NavbarComponent]
+  exports: [materialFormModule, LoadingComponent, NavbarComponent]
 })
 export class SharedModule { }

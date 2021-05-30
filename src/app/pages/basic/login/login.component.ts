@@ -80,11 +80,11 @@ export class LoginComponent implements OnInit {
         this.contraIngreso = "123456";
         break;
       case "paciente1":
-        this.emailIngreso= "nicoeesssgomez27@gmail.com";
+        this.emailIngreso= "federicomgomez1@gmail.com";
         this.contraIngreso = "123456";
         break;
       case "paciente2":
-        this.emailIngreso= "e@gmail.com";
+        this.emailIngreso= "chewy275@gmail.com";
         this.contraIngreso = "123456";
         break;
       case "especialista1":
@@ -92,7 +92,7 @@ export class LoginComponent implements OnInit {
         this.contraIngreso = "123456";
         break;
       case "especialista2":
-        this.emailIngreso= "se@gmail.com";
+        this.emailIngreso= "santiago.ezequiel.gomez@gmail.com";
         this.contraIngreso = "123456";
         break;
     }

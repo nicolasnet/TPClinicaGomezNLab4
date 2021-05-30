@@ -1,33 +1,108 @@
 <app-navbar></app-navbar>
-<div class="card mt-5" *ngIf="usuario; else loading">
-    <div class="card-body text-center">
-      <div *ngIf="url" >
-        <img [src]="url">
+<div *ngIf="usuario; else loading">
+  <div class="card mt-5" *ngIf="!mostrar">
+      <div class="card-body text-center" >
+        <div *ngIf="url" >
+          <img [src]="url">
+        </div>
+          
+        <h3 class="card-title text-center">Mis Datos</h3>
+        <div class="form-group mt-2">
+          <p class="text-center">
+            Nombre:  <strong>{{usuario.nombre}}</strong>
+            <br>
+            Apellido:  <strong>{{usuario.apellido}}</strong>
+            <br>
+            Edad:  <strong>{{usuario.edad}}</strong>
+            <br>
+            DNI:  <strong>{{usuario.dni}}</strong>
+            <br>
+            Email:  <strong>{{usuario.email}}</strong>
+            <br>
+            Tipo de Usuario:  <strong>{{usuario.role}}</strong>
+          </p>
+          
+        </div>
+        <div class="form-group text-center mt-5">
+          <button mat-raised-button color="primary" (click)="Mostrar()">
+            Establecer disponibilidad horaria
+          </button>
+        </div>
       </div>
-        
-      <h3 class="card-title text-center">Mis Datos</h3>
-      <div class="form-group mt-2">
-        <p class="text-center">
-          Nombre:  <strong>{{usuario.nombre}}</strong>
-          <br>
-          Apellido:  <strong>{{usuario.apellido}}</strong>
-          <br>
-          Edad:  <strong>{{usuario.edad}}</strong>
-          <br>
-          DNI:  <strong>{{usuario.dni}}</strong>
-          <br>
-          Email:  <strong>{{usuario.email}}</strong>
-        </p>
-        
-      </div>
-      <div class="form-group text-center mt-5">
-        <!-- <button mat-raised-button color="primary" (click)="onSendEmail()">
-          Reenviar email de verificación
-        </button> -->
-      </div>
-    </div>
   </div>
 
-  <ng-template #loading>
-    <app-loading></app-loading>
-  </ng-template>
+  <div class="container" *ngIf="mostrar">
+    <main>
+      <div class="row-center text-center">
+        <p class="text-muted">Elegir Especialidad y establecer días, horarios y duración de los turnos</p>
+          <div >
+            <div class="text-center">
+              <p class="text-muted">(Todos los campos son obligatorios)</p>
+            </div>
+              <form class="needs-validation" [formGroup]="forma" (ngSubmit)="NuevaDisponibilidad()">          
+  
+                      <div class="row g-3">                     
+                        
+                        <div class="col-sm-3" >
+                            <mat-form-field appearance="outline">
+                              <mat-label>Especialidad</mat-label>
+                              <mat-select id="especialidad" formControlName="especialidad">
+                                <mat-option *ngFor="let especialidad of listaEspecialidades" [value]="especialidad.nombre">{{especialidad.nombre}}</mat-option>
+                              </mat-select>
+                              <mat-error class="invalid" *ngIf="forma.get('especialidad').errors?.required && forma.get('especialidad').touched">La especialidad es requerida</mat-error>
+                            </mat-form-field>                        
+                          </div> 
+                        <div class="col-sm-3" >
+                          <mat-form-field appearance="outline">
+                            <mat-label>Dias</mat-label>
+                            <mat-select id="dias" formControlName="dias" multiple>
+                              <mat-option *ngFor="let dia of listaDias" [value]="dia">{{dia}}</mat-option>
+                            </mat-select>
+                            <mat-error class="invalid" *ngIf="forma.get('dias').errors?.required && forma.get('dias').touched">Los dias son requeridos</mat-error>
+                          </mat-form-field>                        
+                        </div>  
+                        <div class="col-sm-2" >
+                            <mat-form-field appearance="outline">
+                              <mat-label>Horario Inicio</mat-label>
+                              <mat-select id="horarioInicial" formControlName="horarioInicial">
+                                <mat-option *ngFor="let hora of listaHorarios" [value]="hora">{{hora}} hs.</mat-option>
+                              </mat-select>
+                              <mat-error class="invalid" *ngIf="forma.get('horarioInicial').errors?.required && forma.get('horarioInicial').touched">El horario de Inicio  es requerido</mat-error>
+                            </mat-form-field>                        
+                          </div>
+                          <div class="col-sm-2" >
+                            <mat-form-field appearance="outline">
+                              <mat-label>Horario Final</mat-label>
+                              <mat-select id="horarioFinal" formControlName="horarioFinal">
+                                <mat-option *ngFor="let hora of listaHorarios" [value]="hora">{{hora}} hs.</mat-option>
+                              </mat-select>
+                              <mat-error class="invalid" *ngIf="forma.get('horarioFinal').errors?.required && forma.get('horarioFinal').touched">El horario de finalización es requerido</mat-error>
+                            </mat-form-field>                        
+                          </div>
+                          <div class="col-sm-2" >
+                            <mat-form-field appearance="outline">
+                              <mat-label>Duración</mat-label>
+                              <mat-select id="duracion" formControlName="duracion">
+                                <mat-option *ngFor="let minutos of listaDuracion" [value]="minutos">{{minutos}} Minutos</mat-option>
+                              </mat-select>
+                              <mat-error class="invalid" *ngIf="forma.get('duracion').errors?.required && forma.get('duracion').touched">La duración es requerida</mat-error>
+                            </mat-form-field>                        
+                          </div>
+  
+                      </div>
+                      
+                  <hr class="my-4">
+                
+                  <button mat-raised-button color="accent" class="w-100" type="submit" [disabled]="forma.invalid">Enviar Disponibilidad</button>
+                  <p class="textoOk" *ngIf="correcto">Disponibilidad Horaria enviada con exito</p>             
+              </form>
+          </div>
+      </div>
+    </main>
+  </div>
+
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
