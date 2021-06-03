@@ -56,7 +56,7 @@
                           <mat-form-field appearance="outline">
                             <mat-label>Dias</mat-label>
                             <mat-select id="dias" formControlName="dias" multiple>
-                              <mat-option *ngFor="let dia of listaDias" [value]="dia">{{dia}}</mat-option>
+                              <mat-option *ngFor="let dia of listaDias" [value]="dia">{{dia.nombre}}</mat-option>
                             </mat-select>
                             <mat-error class="invalid" *ngIf="forma.get('dias').errors?.required && forma.get('dias').touched">Los dias son requeridos</mat-error>
                           </mat-form-field>                        

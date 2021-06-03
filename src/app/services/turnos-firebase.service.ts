@@ -8,14 +8,14 @@ import { Turno } from '../clases/turno';
 })
 export class TurnosFirebaseService {
 
-  private dbpath = '/misHorarios'; //ruta de la coleccion de firebase.
+  private dbpath = '/turnos'; //ruta de la coleccion de firebase.
   mensajesRef: AngularFirestoreCollection<Turno>;
   mensajes:Observable<any[]>;
   turnoSeleccionado: unknown;
   ultimoId: number;
 
   constructor(private db: AngularFirestore) {
-    this.mensajesRef=db.collection<any>(this.dbpath, ref => ref.orderBy('id'));
+    this.mensajesRef=db.collection<any>(this.dbpath, ref => ref.orderBy('dia'));
     this.mensajes=this.mensajesRef.valueChanges(this.dbpath);
   }
 
@@ -24,7 +24,7 @@ export class TurnosFirebaseService {
     return this.mensajes;
   }
 
-  async obtenerTurnoPorId (id: number){
+  async obtenerTurnoPorId (id: string){
     await this.db.collection('/usuarios').ref.where('id', '==', id).get().then((responce)=>{
       this.turnoSeleccionado = responce.docs[0].data();
       // console.log(responce.docs[0].data());
@@ -39,7 +39,7 @@ export class TurnosFirebaseService {
   }
  
   create(mensaje: Turno): any{
-    console.log("Entro a funcion createeeeeeeee");
+    console.log("Entro a funcion create de TURNOS");
     return this.mensajesRef.add({...mensaje});
   }
 

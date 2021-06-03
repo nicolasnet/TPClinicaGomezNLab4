@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private navegador: Router, private authSvc: AuthFirebaseService) {
     // console.log(this.user$)
-    console.log("navbar Role: " + this.role);
+    // console.log("navbar Role: " + this.role);
    }
 
   ngOnInit(): void {
