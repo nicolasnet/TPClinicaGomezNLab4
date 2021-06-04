@@ -7,10 +7,13 @@
                 <img src="../../../../assets/Imagenes/clinica-portada.jpg">
                 <h1>Bienvenido a Clinica Online</h1>                                                    
                 
-                <h5 *ngIf="user$ | async as user; else iniciar"> En el menu de navegacion podes elegir entre los distintos componentes interactivos.</h5>
+                <h5 *ngIf="user$ | async as user; else iniciar"> En el menu de navegacion podes elegir entre los distintos componentes interactivos.
+                </h5>
                 <ng-template #iniciar>
                     <h5 >Para poder utilizar nuestros servicios por favor ingresa con tu usuario o registrate.</h5>
                 </ng-template>
+
+                
             </div>
         </div>
     </div>

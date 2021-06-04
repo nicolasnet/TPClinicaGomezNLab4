@@ -26,6 +26,8 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { LoadingComponent } from '../pages/basic/loading/loading.component';
 import { NavbarComponent } from '../pages/basic/navbar/navbar.component';
 
+import { TurnosDatePipe } from '../pipes/turnos-date.pipe';
+
 const materialFormModule =[
   MatCardModule,
   MatButtonModule,
@@ -48,12 +50,14 @@ const materialFormModule =[
   MatGridListModule,
   FormsModule,
   ReactiveFormsModule
+  
 ]
 
 @NgModule({
   declarations: [
     LoadingComponent,
-    NavbarComponent
+    NavbarComponent,
+    TurnosDatePipe
   ],
   imports: [
     CommonModule,
@@ -61,6 +65,6 @@ const materialFormModule =[
     materialFormModule
     
   ],
-  exports: [materialFormModule, LoadingComponent, NavbarComponent]
+  exports: [materialFormModule, LoadingComponent, NavbarComponent, TurnosDatePipe]
 })
 export class SharedModule { }

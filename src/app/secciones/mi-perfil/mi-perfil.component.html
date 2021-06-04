@@ -23,7 +23,7 @@
           </p>
           
         </div>
-        <div class="form-group text-center mt-5">
+        <div class="form-group text-center mt-5" *ngIf="usuario.role == 'especialista'">
           <button mat-raised-button color="primary" (click)="Mostrar()">
             Establecer disponibilidad horaria
           </button>

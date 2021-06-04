@@ -11,7 +11,9 @@
                     
           <li><a href="/secciones/usuarios" class="nav-link px-2 texto" *ngIf="role=='admin'">Usuarios</a></li>
 
-          <li><a href="/secciones/usuarios" class="nav-link px-2 texto" *ngIf="role=='especialista'">Especialistas</a></li>
+          <!-- <li><a href="/secciones/usuarios" class="nav-link px-2 texto" *ngIf="role=='especialista'">Especialistas</a></li> -->
+
+          <li><a href="/secciones/pedirturno" class="nav-link px-2 texto" *ngIf="role=='paciente'">Pedir turno</a></li>
 
           <li><a href="/secciones/misturnos" class="nav-link px-2 texto" *ngIf="role">Mis turnos</a></li>
 
@@ -33,7 +35,6 @@
             <button type="button" class="btn btn-warning" (click)="Navegar('registro')">Registro</button>
           </ng-template>
         </div>
-
       </div>
     </div>
 </header>

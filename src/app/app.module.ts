@@ -20,6 +20,7 @@ import { EmailVerificationComponent } from './pages/basic/email-verification/ema
 import { SharedModule } from './shared/shared.module';
 import { SeccionesModule } from './secciones/secciones.module';
 import { EspecialistaVerificationComponent } from './pages/basic/especialista-verification/especialista-verification.component';
+// import { TurnosDatePipe } from './pipes/turnos-date.pipe';
 
 
 

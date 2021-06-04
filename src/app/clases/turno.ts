@@ -4,11 +4,9 @@ export type Estado = 'disponible' | 'ocupado' | 'cancelado'| 'finalizado'| 'rech
 
 export class Turno {
     id: string;
-    // emailMedico: string;
     medico: User;
     especialidad: string;
     dia: Date;
-    // horario: number;
     duracion: number;
     estado: Estado;
     paciente?: User;
