@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 <div class="card mt-5" *ngIf="user$ | async as user; else loading">
     <div class="card-body">
         <h3 class="card-title text-center">Gracias por registrarte!</h3>
@@ -8,7 +8,10 @@
         </p>
         <p class="text-center">
             Pero tu cuenta como Especialista no fue habilitada por un Administrador.
+            <br>
+            <button mat-stroked-button color="warn" (click)="Desconectarse()">Desconectarse</button>
         </p>
+        
         </div>
         
     </div>
