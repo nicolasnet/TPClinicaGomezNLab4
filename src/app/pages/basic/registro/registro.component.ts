@@ -22,6 +22,7 @@ export class RegistroComponent implements OnInit {
   public forma: FormGroup;
   listaEspecialidades:any;  
   errorIngreso=false;
+  imgEspecialistaDefault: "https://firebasestorage.googleapis.com/v0/b/gomezn-tpfinal-clinica.appspot.com/o/iconos%2F034-nurse.png?alt=media&token=bf78ea8a-1f90-44f2-94f1-313e4be48540";
   imgPerfil: any;
   imgFrente: any;
   disabled = true;
@@ -29,6 +30,7 @@ export class RegistroComponent implements OnInit {
 
   pruebaIMG:any;
   role: any;
+  imgPerfilURL: any;
 
   constructor(private fb: FormBuilder,
     public firebaseService: AuthFirebaseService,
@@ -172,7 +174,9 @@ export class RegistroComponent implements OnInit {
       if(this.forma.get('especialidadNueva').value){
         const nueva = new Especialidad;
         nueva.nombre = this.forma.get('especialidadNueva').value;
+        nueva.imagen = this.imgEspecialistaDefault;
         usuarioNuevo.especialidad.push({'nombre': nueva.nombre});
+        
         this.especialidadesService.create(nueva);
         usuarioNuevo.verificacionEspec = false;        
       }
@@ -185,11 +189,14 @@ export class RegistroComponent implements OnInit {
     this.usuarioService.create(usuarioNuevo);
   }
 
-  public subirArchivos() {
-     this.firebaseStorage.uploadImage(this.imgPerfil, this.forma.get('email').value + "-imgPerfil.jpg");
+  public async subirArchivos() {
+    await this.firebaseStorage.uploadImage(this.imgPerfil, this.forma.get('email').value + "-imgPerfil.jpg", this.forma.get('email').value, "imgPerfil")
+    this.imgPerfilURL = this.firebaseStorage.imgUrl;
+    console.log(this.imgPerfilURL);
     if(this.paciente){
-      this.firebaseStorage.uploadImage(this.imgFrente, this.forma.get('email').value + "-imgFrente.jpg");
+      this.firebaseStorage.uploadImage(this.imgFrente, this.forma.get('email').value + "-imgFrente.jpg", this.forma.get('email').value, "imgFrente");
     }
+    
     
   }
 

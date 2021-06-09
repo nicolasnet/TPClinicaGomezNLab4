@@ -3,7 +3,7 @@ IMPORTANTE
 Sprint 2, cosas a tener en cuenta:
 sacar turno:
 (tener en cuenta template de input y output del 1er parcial)
-mostrar listado por con boton por cada especialidad y con una imagen cada uno. Para las nuevas
+mostrar listado con boton por cada especialidad y con una imagen cada uno. Para las nuevas
 especialidades tener una por defecto.
 A elegir especialidad mostrar los 1ros 3 turnos libres.
 Al costado listado fav button, con listado de medicos con foto, al apretar filtra los turnos por ese especialista.

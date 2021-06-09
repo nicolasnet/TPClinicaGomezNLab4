@@ -1,0 +1,18 @@
+<div *ngIf="Verificar()" >
+    <h5>Especialistas en: {{especialidadParaFiltrar.nombre}}</h5>
+    <!-- <mat-card *ngFor="let turno of listaTurnosPorEspecialidad" > {{turno.especialidad}}</mat-card> -->
+
+
+    <ul class="list-group mb-3 card-body overflow-auto" style="height: 300px;" #scrollMe  [scrollTop]="scrollMe">
+        <li type="button" class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let usuario of listaUsuariosEspecialidadFiltrada; let i=index">            
+            <mat-card > Dr/a.: {{usuario.apellido}} {{usuario.nombre}}  <button mat-fab color="primary" class="circular--portrait"> <img  [src]=usuario.imgPerfil > </button></mat-card> 
+            
+            <!-- <mat-card (click)="PedirTurno(turno)">
+                Solicitar turno
+                <button mat-mini-fab color="primary"> <mat-icon>check</mat-icon> </button>
+             </mat-card> -->
+            
+        </li>
+    </ul>
+
+</div>

@@ -1,0 +1,17 @@
+img{
+    width: 90%;
+    height: 90%;
+    cursor: pointer;
+    
+}
+
+mat-grid-list{
+    width: 100%;
+    height: 100%;
+}
+
+p{
+    position: fixed;
+    cursor: pointer;
+    opacity: 50%;    
+}

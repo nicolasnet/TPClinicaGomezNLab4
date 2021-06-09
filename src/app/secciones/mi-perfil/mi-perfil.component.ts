@@ -7,7 +7,7 @@ import { User } from 'src/app/clases/user';
 import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 import { CrearTurnosService } from 'src/app/services/crear-turnos.service';
 import { DiasLaborablesService } from 'src/app/services/dias-laborables.service';
-import { FileFirestoreService, MEDIA_STORAGE_PATH } from 'src/app/services/file-firestore.service';
+import { FileFirestoreService, FotosUsuario_STORAGE_PATH } from 'src/app/services/file-firestore.service';
 import { MisHorariosFirebaseService } from 'src/app/services/mis-horarios-firebase.service';
 import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.service';
 
@@ -34,10 +34,10 @@ export class MiPerfilComponent implements OnInit {
   constructor(private crearTurnosServ: CrearTurnosService ,private diasLaborablesServ: DiasLaborablesService, private usuarioService: UsuariosFirebaseService, private storageService: FileFirestoreService,private fb: FormBuilder, private router: Router, private misHorariosServ: MisHorariosFirebaseService) {
     this.listaDias = this.diasLaborablesServ.listadoDiasLaborables;
     this.email = localStorage.getItem('usuario');
-    this.storageService.referenciaCloudStorage(MEDIA_STORAGE_PATH + this.email+"-imgPerfil.jpg")
+    this.storageService.referenciaCloudStorage(FotosUsuario_STORAGE_PATH + this.email+"-imgPerfil.jpg")
         .getDownloadURL().pipe(take(1)).subscribe(url => {
             this.url = url;
-            // console.log(this.url)
+            console.log(this.url)
         })
     this.obtenerUsuarioLogueado();
 
@@ -50,7 +50,7 @@ export class MiPerfilComponent implements OnInit {
       'horarioInicial': ['', Validators.required],
       'horarioFinal': ['', Validators.required],
       'duracion': ['', Validators.required],
-    });
+    }); 
   }
 
 

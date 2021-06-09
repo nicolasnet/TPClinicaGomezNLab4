@@ -1,0 +1,4 @@
+<button mat-raised-button color="accent" *ngIf="!mostrar" (click)="Mostrar()">Cambiar Especialidad</button>
+<mat-grid-list cols="6" rowHeight="5:4" *ngIf="mostrar">
+    <mat-grid-tile *ngFor="let especialidad of listaEspecialidades" (click)="EnviarEspecialidad(especialidad)"> <img [src]="especialidad.imagen" title="{{especialidad.nombre}}"> </mat-grid-tile>   
+</mat-grid-list>
