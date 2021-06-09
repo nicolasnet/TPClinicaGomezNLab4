@@ -16,6 +16,8 @@ export class ListadoTurnosComponent implements OnInit {
   @Input() medicoParaFiltrar: User
   listaTurnos: any;
   listaTurnosPorEspecialidad: Array<Turno>;
+  listaTurnosPorMedico: Array<Turno>;
+  medicos: boolean;
 
   constructor(private turnosFireServ: TurnosFirebaseService, private router: Router) {
     this.turnosFireServ.obtenerTurnosDisponibles().subscribe(listado =>{        
@@ -27,19 +29,26 @@ export class ListadoTurnosComponent implements OnInit {
   }
 
 
-  Verificar(){
-    if(this.medicoParaFiltrar){
-      console.log("Medico filtrado")
+  VerificarMedico(){
+    if(this.medicoParaFiltrar){   
+      this.listaTurnosPorMedico = new Array<Turno>();
+      this.medicos = true;
       for (let index = 0; index < this.listaTurnosPorEspecialidad.length; index++) {
-        if(this.listaTurnosPorEspecialidad[index].medico.email != this.medicoParaFiltrar.email){
-          this.listaTurnosPorEspecialidad.splice(index,1);
-        }
-        
+        if(this.listaTurnosPorEspecialidad[index].medico.email == this.medicoParaFiltrar.email){
+          this.listaTurnosPorMedico.push(this.listaTurnosPorEspecialidad[index]);
+        }        
       }
-    }
+      console.log("filtro por medico: "+this.listaTurnosPorEspecialidad)
+      return true;
+    }  
+    
+  }
 
+
+  VerificarEspecialidad(){
     if(this.especialidadParaFiltrar){
       this.listaTurnosPorEspecialidad = new Array<Turno>();
+      this.medicos = false;
       for (let index = 0; index < this.listaTurnos.length; index++) {
          if(this.listaTurnos[index].especialidad == this.especialidadParaFiltrar.nombre){
            this.listaTurnosPorEspecialidad.push(this.listaTurnos[index]);
@@ -48,7 +57,6 @@ export class ListadoTurnosComponent implements OnInit {
       }
       return true;
     }
-    
   }
 
   PedirTurno(turnoElegido: Turno){
