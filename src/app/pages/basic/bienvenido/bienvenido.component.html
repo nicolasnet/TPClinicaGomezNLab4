@@ -4,7 +4,10 @@
     <div class="row-center">        
         <div class="col-md-12">
             <div class="home-template texto">
-                <img src="../../../../assets/Imagenes/clinica-portada.jpg">
+                <mat-grid-list cols="1" rowHeight="3.5:1" >
+                    <mat-grid-tile > <img src="../../../../assets/Imagenes/clinica-portada.jpg"> </mat-grid-tile>   
+                </mat-grid-list>
+                
                 <h1>Bienvenido a Clinica Online</h1>                                                    
                 
                 <h5 *ngIf="user$ | async as user; else iniciar"> En el menu de navegacion podes elegir entre los distintos componentes interactivos.
