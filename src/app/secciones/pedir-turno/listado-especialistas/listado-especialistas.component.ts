@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { Especialidad } from 'src/app/clases/especialidad';
@@ -13,6 +13,7 @@ import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.serv
 })
 export class ListadoEspecialistasComponent implements OnInit {
 
+  @Output() eventEspecialistaSeleccionado: EventEmitter<any> = new EventEmitter<any>();
   @Input() especialidadParaFiltrar: Especialidad
   listaUsuarios: any[];
   listaUsuariosEspecialidadFiltrada: any[];
@@ -40,10 +41,17 @@ export class ListadoEspecialistasComponent implements OnInit {
             }
           }
         }        
-      }
-      
+      }      
       return true;
     }
   }
+
+  FiltrarPorEspecialista(usuario: User){
+    console.log("sale evento emiter "+usuario);
+    this.eventEspecialistaSeleccionado.emit(usuario);
+
+  }
+
+
 
 }

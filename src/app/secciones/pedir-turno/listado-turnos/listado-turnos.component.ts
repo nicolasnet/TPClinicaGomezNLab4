@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Especialidad } from 'src/app/clases/especialidad';
 import { Turno } from 'src/app/clases/turno';
+import { User } from 'src/app/clases/user';
 import { TurnosFirebaseService } from 'src/app/services/turnos-firebase.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { TurnosFirebaseService } from 'src/app/services/turnos-firebase.service'
 export class ListadoTurnosComponent implements OnInit {
 
   @Input() especialidadParaFiltrar: Especialidad
+  @Input() medicoParaFiltrar: User
   listaTurnos: any;
   listaTurnosPorEspecialidad: Array<Turno>;
 
@@ -26,6 +28,16 @@ export class ListadoTurnosComponent implements OnInit {
 
 
   Verificar(){
+    if(this.medicoParaFiltrar){
+      console.log("Medico filtrado")
+      for (let index = 0; index < this.listaTurnosPorEspecialidad.length; index++) {
+        if(this.listaTurnosPorEspecialidad[index].medico.email != this.medicoParaFiltrar.email){
+          this.listaTurnosPorEspecialidad.splice(index,1);
+        }
+        
+      }
+    }
+
     if(this.especialidadParaFiltrar){
       this.listaTurnosPorEspecialidad = new Array<Turno>();
       for (let index = 0; index < this.listaTurnos.length; index++) {
@@ -36,6 +48,7 @@ export class ListadoTurnosComponent implements OnInit {
       }
       return true;
     }
+    
   }
 
   PedirTurno(turnoElegido: Turno){

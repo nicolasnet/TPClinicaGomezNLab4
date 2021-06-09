@@ -88,7 +88,7 @@ export class RegistroComponent implements OnInit {
     if(this.forma.get('password').value == this.forma.get('password2').value){
       this.errorIngreso = false;      
       try {
-        const user = await this.firebaseService.SignUp(this.forma.get('email').value, this.forma.get('password').value);
+        const user = await this.firebaseService.SignUp(this.forma.get('email').value.toLowerCase(), this.forma.get('password').value);
         if (user) {
           this.subirArchivos();
           this.CreaUsuario();
@@ -105,7 +105,7 @@ export class RegistroComponent implements OnInit {
   private checkUserIsVerified(user: User) {
     if (user && user.emailVerified) {
       this.router.navigate(['/']);
-      localStorage.setItem('usuario',this.forma.get('email').value)
+      localStorage.setItem('usuario',this.forma.get('email').value.toLowerCase())
     } else if (user) {
       this.router.navigate(['/verificacion-email']);
     } else {
@@ -190,11 +190,11 @@ export class RegistroComponent implements OnInit {
   }
 
   public async subirArchivos() {
-    await this.firebaseStorage.uploadImage(this.imgPerfil, this.forma.get('email').value + "-imgPerfil.jpg", this.forma.get('email').value, "imgPerfil")
+    await this.firebaseStorage.uploadImage(this.imgPerfil, this.forma.get('email').value.toLowerCase() + "-imgPerfil.jpg", this.forma.get('email').value.toLowerCase(), "imgPerfil")
     this.imgPerfilURL = this.firebaseStorage.imgUrl;
     console.log(this.imgPerfilURL);
     if(this.paciente){
-      this.firebaseStorage.uploadImage(this.imgFrente, this.forma.get('email').value + "-imgFrente.jpg", this.forma.get('email').value, "imgFrente");
+      this.firebaseStorage.uploadImage(this.imgFrente, this.forma.get('email').value.toLowerCase() + "-imgFrente.jpg", this.forma.get('email').value.toLowerCase(), "imgFrente");
     }
     
     

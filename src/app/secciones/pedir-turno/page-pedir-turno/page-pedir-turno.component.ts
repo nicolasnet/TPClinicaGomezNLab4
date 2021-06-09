@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Especialidad } from 'src/app/clases/especialidad';
+import { User } from 'src/app/clases/user';
 
 @Component({
   selector: 'app-page-pedir-turno',
@@ -9,6 +10,7 @@ import { Especialidad } from 'src/app/clases/especialidad';
 export class PagePedirTurnoComponent implements OnInit {
 
   especialidadSeleccionada: Especialidad;
+  medicoSeleccionado: User;
 
   constructor() { }
 
@@ -18,6 +20,11 @@ export class PagePedirTurnoComponent implements OnInit {
   CargarEspecialidadSeleccionado(especialidad: Especialidad){
     this.especialidadSeleccionada = especialidad;
     console.log(especialidad);
+  }
+
+  CargarMedicoSeleccionado(usuario: User){
+    this.medicoSeleccionado = usuario;
+    console.log("entra en funcion de page form: "+usuario);
   }
 
 }

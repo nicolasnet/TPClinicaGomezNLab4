@@ -368,11 +368,11 @@
 
         <div class="row align-items-md-stretch">
           <div class="col-md-6">
-            <app-listado-turnos [especialidadParaFiltrar]="especialidadSeleccionada"></app-listado-turnos>
+            <app-listado-turnos [especialidadParaFiltrar]="especialidadSeleccionada" [medicoParaFiltrar]="medicoSeleccionado"></app-listado-turnos>
           </div>
 
           <div class="col-md-6">
-            <app-listado-especialistas [especialidadParaFiltrar]="especialidadSeleccionada"></app-listado-especialistas>
+            <app-listado-especialistas [especialidadParaFiltrar]="especialidadSeleccionada" (eventEspecialistaSeleccionado)="CargarMedicoSeleccionado($event)"></app-listado-especialistas>
           </div>
         </div>
 
