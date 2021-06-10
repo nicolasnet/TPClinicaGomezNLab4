@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-[Link] https://lab4clinicatpfinal-gomezn.herokuapp.com/
+[Link] (https://lab4clinicatpfinal-gomezn.herokuapp.com/)
 
 ## Uso
 
@@ -12,11 +12,11 @@ Se debe `Acceder` o `Registrarse` para poder utilizar lso servicios brindados.
 
 ## Registro
 
-Todos los campos son obligatorios, se puede elegir entre Paciente o Especialista. `INCLUSO CAPTCHA`
+Todos los campos son obligatorios, se puede elegir entre Paciente o Especialista. `INCLUSO CAPTCHA`.
 
 ## Login
 
-Ingresar con `Email` y `contraseña` previamente registrados. Obligatorio tener el `e-mail verificado`, sin eso no puede usar los servicios. En caso de usuarios especialistas tambien deben ser autorizados por un `ADMIN`
+Ingresar con `Email` y `contraseña` previamente registrados. Obligatorio tener el `e-mail verificado`, sin eso no puede usar los servicios. En caso de usuarios especialistas tambien deben ser autorizados por un `ADMIN`.
 
 ## Mi Perfil
 
