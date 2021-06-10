@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-[Link] (https://lab4clinicatpfinal-gomezn.herokuapp.com/)
+[Link](https://lab4clinicatpfinal-gomezn.herokuapp.com/)
 
 ## Uso
 
