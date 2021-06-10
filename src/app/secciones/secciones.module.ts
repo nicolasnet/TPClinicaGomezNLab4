@@ -13,6 +13,7 @@ import { PagePedirTurnoComponent } from './pedir-turno/page-pedir-turno/page-ped
 import { ListadoTurnosComponent } from './pedir-turno/listado-turnos/listado-turnos.component';
 import { ListadoEspecialistasComponent } from './pedir-turno/listado-especialistas/listado-especialistas.component';
 import { MisTurnosEspecialistasComponent } from './mis-turnos-especialistas/mis-turnos-especialistas.component';
+import { HistoriaClinicaComponent } from './historia-clinica/historia-clinica.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MisTurnosEspecialistasComponent } from './mis-turnos-especialistas/mis-
     PagePedirTurnoComponent,
     ListadoTurnosComponent,
     ListadoEspecialistasComponent,
-    MisTurnosEspecialistasComponent
+    MisTurnosEspecialistasComponent,
+    HistoriaClinicaComponent
   ],
   imports: [
     CommonModule,

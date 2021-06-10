@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HistoriaClinicaComponent } from './historia-clinica/historia-clinica.component';
 import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
 import { MisTurnosEspecialistasComponent } from './mis-turnos-especialistas/mis-turnos-especialistas.component';
 import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'misturnos', component: MisTurnosComponent },
   { path: 'misturnosespecialistas', component: MisTurnosEspecialistasComponent },
   { path: 'miperfil', component: MiPerfilComponent },
+  { path: 'historiaclinica', component: HistoriaClinicaComponent },
   { path: 'todosLosTurnos', component: PedirTurnoComponent },
   { path: 'pedirturno', component: PagePedirTurnoComponent }
 ];

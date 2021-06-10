@@ -31,7 +31,7 @@ export class MiPerfilComponent implements OnInit {
   mostrar: boolean = false;
   correcto: boolean = false;
 
-  constructor(private crearTurnosServ: CrearTurnosService ,private diasLaborablesServ: DiasLaborablesService, private usuarioService: UsuariosFirebaseService, private storageService: FileFirestoreService,private fb: FormBuilder, private router: Router, private misHorariosServ: MisHorariosFirebaseService) {
+  constructor(private navegador: Router, private crearTurnosServ: CrearTurnosService ,private diasLaborablesServ: DiasLaborablesService, private usuarioService: UsuariosFirebaseService, private storageService: FileFirestoreService,private fb: FormBuilder, private router: Router, private misHorariosServ: MisHorariosFirebaseService) {
     this.listaDias = this.diasLaborablesServ.listadoDiasLaborables;
     this.email = localStorage.getItem('usuario');
     this.storageService.referenciaCloudStorage(FotosUsuario_STORAGE_PATH + this.email+"-imgPerfil.jpg")
@@ -77,6 +77,10 @@ export class MiPerfilComponent implements OnInit {
     // this.misHorariosServ.create(misHorariosNuevos);
     this.crearTurnosServ.creaTurno(misHorariosNuevos);
     this.correcto = true;
+  }
+
+  Navegar(ruta: string){
+    this.navegador.navigate([ruta]);
   }
 
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from '@angular/fire';
@@ -20,9 +19,6 @@ import { EmailVerificationComponent } from './pages/basic/email-verification/ema
 import { SharedModule } from './shared/shared.module';
 import { SeccionesModule } from './secciones/secciones.module';
 import { EspecialistaVerificationComponent } from './pages/basic/especialista-verification/especialista-verification.component';
-// import { TurnosDatePipe } from './pipes/turnos-date.pipe';
-
-
 
 
 @NgModule({

@@ -1,0 +1,26 @@
+.container{
+   text-align: center;
+    max-width: 1000px;
+    border: 5px solid rgba(139, 0, 0, 0.226);
+    
+}
+
+.circular--portrait {      
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    border:5px solid darkred;
+  }
+.icono{
+    position: absolute;
+    left: 45%;
+    top: 10%;
+    opacity: 50%;
+    
+}
+
+  /* .circular--portrait img{   
+    width: 50%;
+    height: 50%;
+    margin-bottom: -5%;
+} */

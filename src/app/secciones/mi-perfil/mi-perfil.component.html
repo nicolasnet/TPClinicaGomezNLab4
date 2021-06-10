@@ -28,10 +28,15 @@
             Establecer disponibilidad horaria
           </button>
         </div>
+        <div class="form-group text-center mt-5" *ngIf="usuario.role == 'paciente'">
+          <button mat-raised-button color="primary" (click)="Navegar('historiaclinica')">
+            Ver Historia Clinica Personal
+          </button>
+        </div>
       </div>
   </div>
 
-  
+
 
   <div class="container" *ngIf="mostrar">
     <main>
