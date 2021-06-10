@@ -3,7 +3,7 @@
     
     <ul class="list-group mb-3 card-body overflow-auto" style="height: 300px;" #scrollMe  [scrollTop]="scrollMe">
         <li type="button" class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let usuario of listaUsuariosEspecialidadFiltrada; let i=index">            
-            <mat-card > Dr/a.: {{usuario.apellido}} {{usuario.nombre}}  <button mat-fab color="primary" class="circular--portrait" (click)="FiltrarPorEspecialista(usuario)"> <img  [src]=usuario.imgPerfil > </button></mat-card> 
+            <mat-card (click)="FiltrarPorEspecialista(usuario)"> Dr/a.: {{usuario.apellido}} {{usuario.nombre}}  <button mat-fab color="primary" class="circular--portrait" > <img  [src]=usuario.imgPerfil > </button></mat-card> 
             
             <!-- <mat-card (click)="PedirTurno(turno)">
                 Solicitar turno

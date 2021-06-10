@@ -4,6 +4,23 @@ table {
   }
   
   .mat-form-field {
-    font-size: 14px;
-    width: 100%;
+    font-size: 12px;
+    width: auto;
   }
+
+
+/*Encuesta*/  
+  .container{
+    color: black;
+    max-width: 1000px;
+}
+.invalid {
+    color: red;
+}
+h3{
+    color: darkred;
+}
+
+.new3 {
+    border-top: 1px dotted darkred;
+}

@@ -1,3 +1,4 @@
+import { Encuesta } from "./encuesta";
 import { User } from "./user";
 
 export type Estado = 'disponible' | 'ocupado' | 'cancelado'| 'finalizado'| 'rechazado'| 'aceptado';
@@ -11,7 +12,8 @@ export class Turno {
     estado: Estado;
     paciente?: User;
     emailPaciente?: string;
-    reseñaMedico?: string;
+    comentarioMedico?: string;
     calificacion?: number;
     comentario?: string;
+    encuesta?: Encuesta;
 }

@@ -15,7 +15,9 @@
 
           <li><a href="/secciones/pedirturno" class="nav-link px-2 texto" *ngIf="role=='paciente'">Pedir turno</a></li>
 
-          <li><a href="/secciones/misturnos" class="nav-link px-2 texto" *ngIf="role!='admin'&& role ">Mis turnos</a></li>
+          <li><a href="/secciones/misturnos" class="nav-link px-2 texto" *ngIf="role=='paciente'&& role ">Mis turnos</a></li>
+
+          <li><a href="/secciones/misturnosespecialistas" class="nav-link px-2 texto" *ngIf="role =='especialista'&& role ">Mis turnos</a></li>
 
         </ul>
         <!--

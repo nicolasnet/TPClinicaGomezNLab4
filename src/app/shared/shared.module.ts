@@ -21,6 +21,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { LoadingComponent } from '../pages/basic/loading/loading.component';
@@ -48,6 +49,7 @@ const materialFormModule =[
   MatDialogModule,
   MatSelectModule,
   MatGridListModule,
+  MatTableExporterModule,
   FormsModule,
   ReactiveFormsModule
   

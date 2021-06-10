@@ -3,7 +3,7 @@
     <!-- <mat-card *ngFor="let turno of listaTurnosPorEspecialidad" > {{turno.especialidad}}</mat-card> -->
 
     <div *ngIf="VerificarEspecialidad()">
-        <ul class="list-group mb-3 card-body overflow-auto" style="height: 300px;" #scrollMe  [scrollTop]="scrollMe" *ngIf="!medicos">
+        <ul class="list-group mb-3 card-body overflow-auto" style="height: 300px;" #scrollMe  [scrollTop]="scrollMe" *ngIf="!mostrar">
             <li type="button" class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let turno of listaTurnosPorEspecialidad; let i=index">            
                 <mat-card > {{turno.dia.toMillis() | date:'dd/MM/yyyy hh:mm a' }}</mat-card>
                 <mat-card > Dr/a.: {{turno.medico.apellido}} {{turno.medico.nombre}}</mat-card>
@@ -16,8 +16,8 @@
         </ul>
     </div>
     <div *ngIf="VerificarMedico()">
-        <ul class="list-group mb-3 card-body overflow-auto" style="height: 300px;" #scrollMe  [scrollTop]="scrollMe" *ngIf="medicos">
-            <li type="button" class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let turno of listaTurnosPorMedico; let i=index">            
+        <ul class="list-group mb-3 card-body overflow-auto" style="height: 300px;" #scrollMe  [scrollTop]="scrollMe" *ngIf="mostrar">
+            <li type="button" class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let turno of listaTurnosPorMedico; let i=index">         
                 <mat-card > {{turno.dia.toMillis() | date:'dd/MM/yyyy hh:mm a' }}</mat-card>
                 <mat-card > Dr/a.: {{turno.medico.apellido}} {{turno.medico.nombre}}</mat-card>
                 <mat-card (click)="PedirTurno(turno)">

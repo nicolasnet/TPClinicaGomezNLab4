@@ -362,17 +362,17 @@
         </header>
 
         <div class="p-5 mb-4 bg-light rounded-3">
-          <app-listado-especialidades (eventEspecialidadSeleccionada)="CargarEspecialidadSeleccionado($event)"></app-listado-especialidades>
+          <app-listado-especialidades (eventEspecialidadSeleccionada)="CargarEspecialidadSeleccionado($event)" (eventNoMostrarMedicos)="NoMostrarMedicos($event)"></app-listado-especialidades>
         </div>
 
 
         <div class="row align-items-md-stretch">
           <div class="col-md-6">
-            <app-listado-turnos [especialidadParaFiltrar]="especialidadSeleccionada" [medicoParaFiltrar]="medicoSeleccionado"></app-listado-turnos>
+            <app-listado-turnos [especialidadParaFiltrar]="especialidadSeleccionada" [medicoParaFiltrar]="medicoSeleccionado" [mostrar]="mostrar"></app-listado-turnos>
           </div>
 
           <div class="col-md-6">
-            <app-listado-especialistas [especialidadParaFiltrar]="especialidadSeleccionada" (eventEspecialistaSeleccionado)="CargarMedicoSeleccionado($event)"></app-listado-especialistas>
+            <app-listado-especialistas [especialidadParaFiltrar]="especialidadSeleccionada" (eventEspecialistaSeleccionado)="CargarMedicoSeleccionado($event)" (eventMostrar)="NoMostrarMedicos($event)"></app-listado-especialistas>
           </div>
         </div>
 

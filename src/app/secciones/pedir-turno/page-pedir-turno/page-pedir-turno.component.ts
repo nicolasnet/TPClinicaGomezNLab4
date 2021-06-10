@@ -11,6 +11,7 @@ export class PagePedirTurnoComponent implements OnInit {
 
   especialidadSeleccionada: Especialidad;
   medicoSeleccionado: User;
+  mostrar: boolean;
 
   constructor() { }
 
@@ -24,7 +25,11 @@ export class PagePedirTurnoComponent implements OnInit {
 
   CargarMedicoSeleccionado(usuario: User){
     this.medicoSeleccionado = usuario;
-    console.log("entra en funcion de page form: "+usuario);
+    // console.log("entra en funcion de page form: "+usuario);
+  }
+
+  NoMostrarMedicos(boolean: boolean){
+    this.mostrar = boolean;
   }
 
 }

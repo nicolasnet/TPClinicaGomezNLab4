@@ -42,6 +42,15 @@ export class TurnosFirebaseService {
 
 
 
+  async obtenerTurnosEspecialistas(email: string){
+    await this.db.collection('/turnos').ref.where('medico.email', '==', email).get().then((responce)=>{
+      console.log("entra en obtenerTurnos de los especialistas")
+      this.turnoSeleccionado = responce.docs;
+    });
+  }
+
+
+
   async obtenerTurnoPorId (id: string){
     await this.db.collection('/turnos').ref.where('id', '==', id).get().then((responce)=>{
       this.turnoSeleccionado = responce.docs[0].data();

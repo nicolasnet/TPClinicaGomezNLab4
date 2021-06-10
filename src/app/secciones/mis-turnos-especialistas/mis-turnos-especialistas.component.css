@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 12px;
+    width: 100%;
+  }
+
+
+/* Historia Clinica */
+.container{
+  color: black;
+  max-width: 1000px;
+}
+.invalid {
+  color: red;
+}
+h3{
+  color: darkred;
+}
+
+.new3 {
+  border-top: 1px dotted darkred;
+}

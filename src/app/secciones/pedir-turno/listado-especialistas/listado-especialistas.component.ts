@@ -14,10 +14,12 @@ import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.serv
 export class ListadoEspecialistasComponent implements OnInit {
 
   @Output() eventEspecialistaSeleccionado: EventEmitter<any> = new EventEmitter<any>();
+  @Output() eventMostrar: EventEmitter<any> = new EventEmitter<any>();
   @Input() especialidadParaFiltrar: Especialidad
   listaUsuarios: any[];
   listaUsuariosEspecialidadFiltrada: any[];
   imgUrl: string;
+  
 
   constructor(private ususariosServ: UsuariosFirebaseService, private storageService: FileFirestoreService) {
     this.ususariosServ.getAll().subscribe(listado =>{        
@@ -30,7 +32,7 @@ export class ListadoEspecialistasComponent implements OnInit {
 
   Verificar(){
     if(this.especialidadParaFiltrar){
-      console.log("entro en verificar ususarios")
+      // console.log("entro en verificar ususarios")
       this.listaUsuariosEspecialidadFiltrada = new Array<User>();
       for (let index = 0; index < this.listaUsuarios.length; index++) {
         if(this.listaUsuarios[index].especialidad){
@@ -47,8 +49,9 @@ export class ListadoEspecialistasComponent implements OnInit {
   }
 
   FiltrarPorEspecialista(usuario: User){
-    console.log("sale evento emiter "+usuario);
+    // console.log("sale evento emiter "+usuario);
     this.eventEspecialistaSeleccionado.emit(usuario);
+    this.eventMostrar.emit(true);
 
   }
 

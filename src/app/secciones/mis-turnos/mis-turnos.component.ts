@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
 import { Turno } from 'src/app/clases/turno';
@@ -6,6 +7,8 @@ import { TurnosFirebaseService } from 'src/app/services/turnos-firebase.service'
 import { TurnosDatePipe } from 'src/app/pipes/turnos-date.pipe';
 import { Router } from '@angular/router';
 import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.service';
+import { Encuesta } from 'src/app/clases/encuesta';
+import { EncuestaFirebaseService } from 'src/app/services/encuesta-firebase.service';
 
 
 @Component({
@@ -23,14 +26,20 @@ import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.serv
 export class MisTurnosComponent implements OnInit {
 
   dataSource;
-  displayedColumns = ['especialidad', 'dia', 'medico', 'estado'];
+  displayedColumns = ['especialidad', 'dia', 'medico', 'estado', 'acciones'];
   // expandedElement: Turno | null;
   listaTurnos;
   email: string;
   usuario: any;
   listadoFinal = new Array<any>();
+  mostrarCalificacion: boolean = false;
+  mostrarComentario: boolean = false;
+  encuesta: boolean = false;
+  public forma: FormGroup;
+  nuevaEncuesta: Encuesta;
+  turnoEncuesta: Turno;
 
-  constructor(private turnosFireServ: TurnosFirebaseService, private router: Router, private usuarioService: UsuariosFirebaseService) {
+  constructor(private fb: FormBuilder, private turnosFireServ: TurnosFirebaseService, private router: Router, private usuarioService: UsuariosFirebaseService, private encuestaServ: EncuestaFirebaseService) {
     
 
     this.email = localStorage.getItem('usuario');
@@ -43,7 +52,12 @@ export class MisTurnosComponent implements OnInit {
     
    }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
+    this.forma = this.fb.group({
+      'puntaje': ['', Validators.required],
+      'favorito': ['', Validators.required],
+      'opinion': ['', Validators.required],
+    });
   }
 
   applyFilter(event: Event) {
@@ -71,9 +85,46 @@ export class MisTurnosComponent implements OnInit {
   async CancelarTurno(turno: Turno){
     await this.turnosFireServ.obtenerTurnoPorId(turno.id);
     console.log(turno);
-    this.turnosFireServ.update(this.turnosFireServ.idTurnoSeleccionado, {estado: "cancelado", paciente: ""} )
+    this.turnosFireServ.update(this.turnosFireServ.idTurnoSeleccionado, {estado: "disponible", paciente: ""} )
     this.router.navigate(['miperfil']);
 
+  }
+
+  Muestra(muestra: string, turno?: Turno){
+    switch(muestra){
+      case "calificacion":
+        this.mostrarCalificacion = !this.mostrarCalificacion;
+        break;
+      case "comentario":
+        this.mostrarComentario = !this.mostrarComentario;
+        break;
+      case "encuesta":
+        this.encuesta = !this.encuesta;
+        this.turnoEncuesta = turno;
+        break;
+    }
+    
+  }
+
+  async Calificar(turno: Turno, texto: HTMLInputElement){
+    console.log(texto.value + " "+ turno)
+    await this.turnosFireServ.obtenerTurnoPorId(turno.id);
+    this.turnosFireServ.update(this.turnosFireServ.idTurnoSeleccionado, {calificacion: texto.value} )
+    this.mostrarCalificacion = false;
+  }
+
+
+  async NuevaEncuesta(){
+    const encuestaNueva = new Encuesta;
+    
+    encuestaNueva.puntaje = this.forma.get('puntaje').value;
+    encuestaNueva.opinion = this.forma.get('opinion').value;
+    encuestaNueva.favorito = this.forma.get('favorito').value;
+    await this.turnosFireServ.obtenerTurnoPorId(this.turnoEncuesta.id);
+    this.turnosFireServ.update(this.turnosFireServ.idTurnoSeleccionado, {encuesta: Object.assign({}, encuestaNueva)} )
+    encuestaNueva.turno = this.turnoEncuesta;
+    this.encuestaServ.create(encuestaNueva);
+    this.encuesta = false;
   }
 
 }
