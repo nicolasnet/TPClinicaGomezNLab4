@@ -2,7 +2,7 @@
 <div *ngIf="usuario; else loading" class="container" id="historiaClinica">
     Descargar: 
     <button mat-button color="warn" (click)="ImprimirPDF()">PDF</button>
-    <h3 ><p class="text-muted">Clinica Online</p></h3> <img src="../../../favicon.ico" class="icono">
+    <!-- <h3 ><p class="text-muted">Clinica Online</p></h3> <img src="../../../favicon.ico" class="icono"> -->
     <h4>Historia Clinica: {{usuario.apellido}} {{usuario.nombre}}</h4>
     <div >
         <img [src]="usuario.imgPerfil" class="circular--portrait">

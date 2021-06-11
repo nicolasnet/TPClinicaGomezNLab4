@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as jsPDF from 'jspdf';
+import jsPDF from 'jspdf';
 
 import { HistoriaClinicaFirebaseService } from 'src/app/services/historia-clinica-firebase.service';
 import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.service';
@@ -52,7 +52,7 @@ export class HistoriaClinicaComponent implements OnInit {
     
     const doc = new jsPDF();
 
-    doc.fromHTML(document.getElementById('historiaClinica'), 10, 10);
+    doc.html(document.getElementById('historiaClinica'));
     doc.save("HistoriaClinica.pdf");
   }
 

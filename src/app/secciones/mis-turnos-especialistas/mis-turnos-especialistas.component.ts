@@ -84,9 +84,9 @@ export class MisTurnosEspecialistasComponent implements OnInit {
       case "comentario":
         this.mostrarComentario = !this.mostrarComentario;
         break;
-    }
-    
+    }    
   }
+  
 
   async NuevaHistoriaClinica(){
     const historiaClinicaNueva = new HistoriaClinica;    
@@ -99,6 +99,13 @@ export class MisTurnosEspecialistasComponent implements OnInit {
     historiaClinicaNueva.emailPaciente = this.turnoHistoriaClinica.paciente.email;
     this.historiaClinicaServ.create(historiaClinicaNueva);
     this.historiaClinica = false;
+  }
+
+  async Calificar(turno: Turno, texto: HTMLInputElement){
+    console.log(texto.value + " "+ turno)
+    await this.turnosFireServ.obtenerTurnoPorId(turno.id);
+    this.turnosFireServ.update(this.turnosFireServ.idTurnoSeleccionado, {comentarioMedico: texto.value} )
+    this.mostrarComentario = false;
   }
 
 

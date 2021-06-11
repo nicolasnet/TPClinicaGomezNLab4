@@ -20,3 +20,10 @@ PDF de paciente en mi perfil. Dar a elegir la opcion de especialidad para crear 
 
 Seccion paciente para especialista. Con Card mostrar todos los pacientes. Foto y peqeño texto con los ultimos 3 turnos.
 Por cada paciente tener boton para obtener historia clinica de ese paciente.
+
+
+Sprint 4:
+Graficos, usar: highchart
+Uno debe ser un grafico de barras.
+
+
