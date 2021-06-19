@@ -1,20 +1,22 @@
 <app-navbar></app-navbar>
-<!-- <mat-form-field >
-    <mat-label>Filtro</mat-label>
-    <input matInput  placeholder="Ejemplo Gomez" #input>
-  </mat-form-field> -->
+
 <div >
   <button mat-stroked-button color="primary" class="botonAgregar" (click)="Navegar('registro')">
     + Agregar Usuario 
   </button>
 </div>
 
+
   <h2 class="text-center">Lista de usuarios</h2>
   Descargar: 
   <button mat-button color="primary" (click)="exporter.exportTable('csv', {fileName: 'Lista de Usuarios'})">CSV</button>
   <button mat-button color="accent" (click)="exporter.exportTable('txt', {fileName: 'Lista de Usuarios'})">TXT</button>
   <div class="mat-elevation-z8" >
-    
+    <mat-form-field >
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo Gomez" #input>
+    </mat-form-field>
+
     <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" matSort>
         
       <ng-container matColumnDef="nombre">
@@ -61,9 +63,9 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   
       
-      <!-- <tr class="mat-row" *matNoDataRow>
+      <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-      </tr> -->
+      </tr>
     </table>
   
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

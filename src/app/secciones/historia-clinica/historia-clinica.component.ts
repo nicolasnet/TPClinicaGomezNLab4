@@ -47,7 +47,8 @@ export class HistoriaClinicaComponent implements OnInit {
   }
 
   ImprimirPDF(){    
-    this.pdfServ.PDFdownloadByHTMLid('historiaClinica', 'HistoriaClinica'+'_'+this.usuario.email);
+    // this.pdfServ.PDFdownloadByHTMLid('historiaClinica', 'HistoriaClinica'+'_'+this.usuario.email);
+    // this.pdfServ.paginado();
   }
 
 }
