@@ -51,8 +51,7 @@ const materialFormModule =[
   MatGridListModule,
   MatTableExporterModule,
   FormsModule,
-  ReactiveFormsModule
-  
+  ReactiveFormsModule  
 ]
 
 @NgModule({

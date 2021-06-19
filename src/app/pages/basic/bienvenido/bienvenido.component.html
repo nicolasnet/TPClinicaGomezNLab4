@@ -2,7 +2,7 @@
 
 <div class="container">   
     <div class="row-center">        
-        <div class="col-md-12">
+        <div class="col-md-12" id="htmlData">
             <div class="home-template texto">
                 <mat-grid-list cols="1" rowHeight="3.5:1" >
                     <mat-grid-tile > <img src="../../../../assets/Imagenes/clinica-portada.jpg"> </mat-grid-tile>   
@@ -20,3 +20,5 @@
         </div>
     </div>
 </div>
+
+<button (click)="downloadPDF('htmlData')"> PDF</button>

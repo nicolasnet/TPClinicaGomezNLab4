@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import jsPDF from 'jspdf';
-
 import { HistoriaClinicaFirebaseService } from 'src/app/services/historia-clinica-firebase.service';
+import { PDFCreatorService } from 'src/app/services/pdfcreator.service';
 import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.service';
 
 @Component({
@@ -17,7 +16,7 @@ export class HistoriaClinicaComponent implements OnInit {
   listadoHistoriaClinica = new Array<any>();
   listadoFinal = new Array<any>();
 
-  constructor(private navegador: Router, private usuarioService: UsuariosFirebaseService, private historiaClinicaServ: HistoriaClinicaFirebaseService) {
+  constructor(private navegador: Router, private usuarioService: UsuariosFirebaseService, private historiaClinicaServ: HistoriaClinicaFirebaseService, private pdfServ: PDFCreatorService) {
     this.email = localStorage.getItem('usuario');
     // this.storageService.referenciaCloudStorage(FotosUsuario_STORAGE_PATH + this.email+"-imgPerfil.jpg")
     //     .getDownloadURL().pipe(take(1)).subscribe(url => {
@@ -47,13 +46,8 @@ export class HistoriaClinicaComponent implements OnInit {
     }
   }
 
-  ImprimirPDF(){
-    
-    
-    const doc = new jsPDF();
-
-    doc.html(document.getElementById('historiaClinica'));
-    doc.save("HistoriaClinica.pdf");
+  ImprimirPDF(){    
+    this.pdfServ.PDFdownloadByHTMLid('historiaClinica', 'HistoriaClinica'+'_'+this.usuario.email);
   }
 
 }

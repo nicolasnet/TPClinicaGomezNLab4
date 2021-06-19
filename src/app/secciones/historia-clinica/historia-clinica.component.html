@@ -1,26 +1,46 @@
 <app-navbar></app-navbar>
-<div *ngIf="usuario; else loading" class="container" id="historiaClinica">
+<div class="btnPDF">
     Descargar: 
     <button mat-button color="warn" (click)="ImprimirPDF()">PDF</button>
-    <!-- <h3 ><p class="text-muted">Clinica Online</p></h3> <img src="../../../favicon.ico" class="icono"> -->
-    <h4>Historia Clinica: {{usuario.apellido}} {{usuario.nombre}}</h4>
+</div>
+
+<div *ngIf="usuario; else loading" class="container" id="historiaClinica">
+    <img src="../../../favicon.ico" class="icono">
     <div >
-        <img [src]="usuario.imgPerfil" class="circular--portrait">
+        <h3 ><p class="text-muted">Clinica Online</p></h3> 
+        <h4>Historia Clinica: {{usuario.apellido}} {{usuario.nombre}}</h4>
+        <div >
+            <img [src]='usuario.imgPerfil' class="circular--portrait">
+        </div>
+        
+        
+        <div *ngIf="listadoHistoriaClinica">
+            <ul class="list-group mb-3 card-body overflow-auto">
+                <li class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let historiaClinica of listadoFinal">            
+                    <mat-card >Turno: {{historiaClinica.turno.dia.toMillis() | date:'dd/MM/yyyy hh:mm a' }}</mat-card>
+                    <mat-card > Dr/a.: {{historiaClinica.turno.paciente.apellido}} {{historiaClinica.turno.paciente.nombre}}</mat-card>
+                    <mat-card >Especialidad: {{historiaClinica.turno.especialidad}}</mat-card>
+                    <mat-card >Reseña Medica: {{historiaClinica.turno.comentarioMedico}}</mat-card>
+                    <mat-card ><strong>Altura:</strong>  {{historiaClinica.altura}}<br> <strong>Peso:</strong> {{historiaClinica.peso}} <br> <strong>Temperatura:</strong> {{historiaClinica.temperatura}} <br><strong>Presion:</strong> {{historiaClinica.presion}} </mat-card>
+                    <mat-card >Otros: {{historiaClinica.otrosDatos}}</mat-card>
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="listadoHistoriaClinica">
+            <ul class="list-group mb-3 card-body overflow-auto">
+                <li class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let historiaClinica of listadoFinal">            
+                    <mat-card >Turno: {{historiaClinica.turno.dia.toMillis() | date:'dd/MM/yyyy hh:mm a' }}</mat-card>
+                    <mat-card > Dr/a.: {{historiaClinica.turno.paciente.apellido}} {{historiaClinica.turno.paciente.nombre}}</mat-card>
+                    <mat-card >Especialidad: {{historiaClinica.turno.especialidad}}</mat-card>
+                    <mat-card >Reseña Medica: {{historiaClinica.turno.comentarioMedico}}</mat-card>
+                    <mat-card ><strong>Altura:</strong>  {{historiaClinica.altura}}<br> <strong>Peso:</strong> {{historiaClinica.peso}} <br> <strong>Temperatura:</strong> {{historiaClinica.temperatura}} <br><strong>Presion:</strong> {{historiaClinica.presion}} </mat-card>
+                    <mat-card >Otros: {{historiaClinica.otrosDatos}}</mat-card>
+                </li>
+            </ul>
+        </div>
     </div>
     
     
-    <div *ngIf="listadoHistoriaClinica">
-        <ul class="list-group mb-3 card-body overflow-auto">
-            <li class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let historiaClinica of listadoFinal">            
-                <mat-card >Turno: {{historiaClinica.turno.dia.toMillis() | date:'dd/MM/yyyy hh:mm a' }}</mat-card>
-                <mat-card > Dr/a.: {{historiaClinica.turno.paciente.apellido}} {{historiaClinica.turno.paciente.nombre}}</mat-card>
-                <mat-card >Especialidad: {{historiaClinica.turno.especialidad}}</mat-card>
-                <mat-card >Reseña Medica: {{historiaClinica.turno.comentarioMedico}}</mat-card>
-                <mat-card ><strong>Altura:</strong>  {{historiaClinica.altura}}<br> <strong>Peso:</strong> {{historiaClinica.peso}} <br> <strong>Temperatura:</strong> {{historiaClinica.temperatura}} <br><strong>Presion:</strong> {{historiaClinica.presion}} </mat-card>
-                <mat-card >Otros: {{historiaClinica.otrosDatos}}</mat-card>
-            </li>
-        </ul>
-    </div>
     
 </div>
 <ng-template #loading>
