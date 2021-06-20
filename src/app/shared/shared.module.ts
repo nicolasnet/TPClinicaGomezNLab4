@@ -28,9 +28,13 @@ import { LoadingComponent } from '../pages/basic/loading/loading.component';
 import { NavbarComponent } from '../pages/basic/navbar/navbar.component';
 
 import { TurnosDatePipe } from '../pipes/turnos-date.pipe';
+import { EmailReduccionPipe } from '../pipes/email-reduccion.pipe';
+
 import { ColorTipoDeEstadoTurnoDirective } from '../directivas/color-tipo-de-estado-turno.directive';
 import { ColorNavbarFondoDirective } from '../directivas/color-navbar-fondo.directive';
 import { ColorNavbarIconoDirective } from '../directivas/color-navbar-icono.directive';
+import { EstadoTurnosPipe } from '../pipes/estado-turnos.pipe';
+import { TipoUsuariosPipe } from '../pipes/tipo-usuarios.pipe';
 
 const materialFormModule =[
   MatCardModule,
@@ -57,14 +61,25 @@ const materialFormModule =[
   ReactiveFormsModule  
 ]
 
+const directivasGroup =[
+  ColorTipoDeEstadoTurnoDirective,
+  ColorNavbarFondoDirective,
+  ColorNavbarIconoDirective,
+]
+
+const pipesGroup =[
+  TurnosDatePipe,
+  EmailReduccionPipe,    
+  EstadoTurnosPipe,
+  TipoUsuariosPipe
+]
+
 @NgModule({
   declarations: [
     LoadingComponent,
     NavbarComponent,
-    TurnosDatePipe,
-    ColorTipoDeEstadoTurnoDirective,
-    ColorNavbarFondoDirective,
-    ColorNavbarIconoDirective
+    directivasGroup,
+    pipesGroup    
   ],
   imports: [
     CommonModule,
@@ -72,6 +87,6 @@ const materialFormModule =[
     materialFormModule
     
   ],
-  exports: [materialFormModule, LoadingComponent, NavbarComponent, TurnosDatePipe, ColorTipoDeEstadoTurnoDirective, ColorNavbarFondoDirective, ColorNavbarIconoDirective]
+  exports: [materialFormModule, directivasGroup, pipesGroup, LoadingComponent, NavbarComponent]
 })
 export class SharedModule { }

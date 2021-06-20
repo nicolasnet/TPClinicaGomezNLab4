@@ -27,7 +27,7 @@
         <div class="text-end">
           <div *ngIf="user$ | async as user; else login">           
             <button type="button" mat-stroked-button color="warn" (click)="Desconectarse()" *ngIf="user">Desconectarse</button>            
-              <a href="/secciones/miperfil" class="email"> {{ user?.email }} </a>
+              <a href="/secciones/miperfil" class="email"> {{ user?.email | emailReduccion }} </a>
           </div>
 
           <ng-template #login>

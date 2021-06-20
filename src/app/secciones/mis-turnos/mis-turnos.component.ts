@@ -16,21 +16,21 @@ import { EncuestaFirebaseService } from 'src/app/services/encuesta-firebase.serv
 @Component({
   selector: 'app-mis-turnos',
   templateUrl: './mis-turnos.component.html',
-  styleUrls: ['./mis-turnos.component.css']
-  // animations: [
-  //   trigger('detailExpand', [
-  //     state('collapsed', style({height: '0px', minHeight: '0'})),
-  //     state('expanded', style({height: '*'})),
-  //     transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-  //   ]),
-  // ],
+  styleUrls: ['./mis-turnos.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class MisTurnosComponent implements OnInit, AfterViewInit {
 
   
   displayedColumns = ['especialidad', 'dia', 'medico', 'estado', 'acciones'];
   public dataSource: MatTableDataSource<any>
-  // expandedElement: Turno | null;
+  expandedElement: Turno | null;
   listaTurnos;
   email: string;
   usuario: any;
