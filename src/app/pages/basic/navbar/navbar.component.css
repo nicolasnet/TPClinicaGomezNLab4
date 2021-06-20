@@ -2,8 +2,19 @@
     color: whitesmoke;
 }
 .texto:hover{
- color: powderblue;
+ color: rgb(157, 64, 233);
 }
 button:hover{
-    color: powderblue;
+    color: rgb(157, 64, 233);
+}
+
+header{
+    background-image: url("../../../../assets/Imagenes/texturaOscura.jpg");
+}
+
+.email{
+    color: whitesmoke;
+}
+.email:hover{
+    color: rgb(157, 64, 233);
 }

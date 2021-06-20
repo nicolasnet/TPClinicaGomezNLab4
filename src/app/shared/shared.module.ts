@@ -28,6 +28,9 @@ import { LoadingComponent } from '../pages/basic/loading/loading.component';
 import { NavbarComponent } from '../pages/basic/navbar/navbar.component';
 
 import { TurnosDatePipe } from '../pipes/turnos-date.pipe';
+import { ColorTipoDeEstadoTurnoDirective } from '../directivas/color-tipo-de-estado-turno.directive';
+import { ColorNavbarFondoDirective } from '../directivas/color-navbar-fondo.directive';
+import { ColorNavbarIconoDirective } from '../directivas/color-navbar-icono.directive';
 
 const materialFormModule =[
   MatCardModule,
@@ -58,7 +61,10 @@ const materialFormModule =[
   declarations: [
     LoadingComponent,
     NavbarComponent,
-    TurnosDatePipe
+    TurnosDatePipe,
+    ColorTipoDeEstadoTurnoDirective,
+    ColorNavbarFondoDirective,
+    ColorNavbarIconoDirective
   ],
   imports: [
     CommonModule,
@@ -66,6 +72,6 @@ const materialFormModule =[
     materialFormModule
     
   ],
-  exports: [materialFormModule, LoadingComponent, NavbarComponent, TurnosDatePipe]
+  exports: [materialFormModule, LoadingComponent, NavbarComponent, TurnosDatePipe, ColorTipoDeEstadoTurnoDirective, ColorNavbarFondoDirective, ColorNavbarIconoDirective]
 })
 export class SharedModule { }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Turno } from 'src/app/clases/turno';
 import { TurnosFirebaseService } from 'src/app/services/turnos-firebase.service';
@@ -23,34 +25,44 @@ import { EncuestaFirebaseService } from 'src/app/services/encuesta-firebase.serv
   //   ]),
   // ],
 })
-export class MisTurnosComponent implements OnInit {
+export class MisTurnosComponent implements OnInit, AfterViewInit {
 
-  dataSource;
+  
   displayedColumns = ['especialidad', 'dia', 'medico', 'estado', 'acciones'];
+  public dataSource: MatTableDataSource<any>
   // expandedElement: Turno | null;
   listaTurnos;
   email: string;
   usuario: any;
-  listadoFinal = new Array<any>();
+  listadoTurnos: Array<Turno>;
+  listadoFinal = Array<Turno>();
   mostrarCalificacion: boolean = false;
   mostrarComentario: boolean = false;
   encuesta: boolean = false;
   public forma: FormGroup;
   nuevaEncuesta: Encuesta;
   turnoEncuesta: Turno;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private fb: FormBuilder, private turnosFireServ: TurnosFirebaseService, private router: Router, private usuarioService: UsuariosFirebaseService, private encuestaServ: EncuestaFirebaseService) {
-    
-
     this.email = localStorage.getItem('usuario');
-    this.obtenerTurnosDelPaciente();
-    this.obtenerUsuarioLogueado();
-    
-    console.log(this.listaTurnos);
-    
-    
-    
+    this.turnosFireServ.obtenerTurnosConPaciente().subscribe(listado =>{        
+      this.listadoTurnos=listado;
+      for (let index = 0; index < this.listadoTurnos.length; index++) {
+        if(this.listadoTurnos[index].paciente.email == this.email){
+          this.listadoFinal.push(this.listadoTurnos[index]);
+        }        
+      }
+      this.dataSource = new MatTableDataSource(this.listadoFinal);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
    }
+
+   ngAfterViewInit() {
+    
+  }
 
    ngOnInit(): void {
     this.forma = this.fb.group({
@@ -70,17 +82,17 @@ export class MisTurnosComponent implements OnInit {
     this.usuario = this.usuarioService.usuarioSeleccionado;
   }
 
-  async obtenerTurnosDelPaciente(){
-    await this.turnosFireServ.obtenerTurnosPaciente(this.email);
-    this.listaTurnos = this.turnosFireServ.turnoSeleccionado;
-    for (let index = 0; index < this.listaTurnos.length; index++) {
-      const element = this.listaTurnos[index].data();
-      this.listadoFinal.push(element);
+  // async obtenerTurnosDelPaciente(){
+  //   await this.turnosFireServ.obtenerTurnosPaciente(this.email);
+  //   this.listaTurnos = this.turnosFireServ.turnoSeleccionado;
+  //   for (let index = 0; index < this.listaTurnos.length; index++) {
+  //     const element = this.listaTurnos[index].data();
+  //     this.listadoFinal.push(element);
       
-    }
-    this.dataSource = this.listadoFinal;
-    console.log(this.listadoFinal);
-  }
+  //   }
+  //   this.dataSource = this.listadoFinal;
+  //   console.log(this.listadoFinal);
+  // }
 
   async CancelarTurno(turno: Turno){
     await this.turnosFireServ.obtenerTurnoPorId(turno.id);

@@ -26,13 +26,10 @@ export class UsuariosComponent implements AfterViewInit  {
     this.usuariosService.getAll().subscribe(listado =>{
         
       this.listaUsuarios=listado;
-      // console.info(this.listaUsuarios);
       this.dataSource = new MatTableDataSource(this.listaUsuarios);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    });
-    // Assign the data to the data source for the table to render
-    
+    });    
   }
 
   ngAfterViewInit() {

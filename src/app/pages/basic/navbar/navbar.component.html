@@ -1,17 +1,15 @@
-<header class="p-3 bg-dark text-white"> 
+<header class="p-3 bg-dark text-white" [appColorNavbarFondo]="role"> 
   <!-- fixed-top  -->
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" >
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"  [appColorNavbarIcono]="role">
           <li>
-            <button mat-icon-button (click)="Navegar('bienvenido')" >
+            <button mat-icon-button (click)="Navegar('bienvenido')">
               <mat-icon>home</mat-icon>
             </button>
           </li>
                     
           <li><a href="/secciones/usuarios" class="nav-link px-2 texto" *ngIf="role=='admin'">Usuarios</a></li>
-
-          <!-- <li><a href="/secciones/usuarios" class="nav-link px-2 texto" *ngIf="role=='especialista'">Especialistas</a></li> -->
 
           <li><a href="/secciones/pedirturno" class="nav-link px-2 texto" *ngIf="role=='paciente'">Pedir turno</a></li>
 
@@ -29,7 +27,7 @@
         <div class="text-end">
           <div *ngIf="user$ | async as user; else login">           
             <button type="button" mat-stroked-button color="warn" (click)="Desconectarse()" *ngIf="user">Desconectarse</button>            
-              <a href="/secciones/miperfil" style="color: whitesmoke;"> {{ user?.email }} </a>
+              <a href="/secciones/miperfil" class="email"> {{ user?.email }} </a>
           </div>
 
           <ng-template #login>

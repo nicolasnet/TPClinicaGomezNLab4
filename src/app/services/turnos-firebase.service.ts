@@ -15,18 +15,27 @@ export class TurnosFirebaseService {
   idTurnoSeleccionado: string;
   listadoTurnosDisponibles;
   listadoTurnosDisponiblesRef;
+  listadoTurnosNODisponiblesRef: AngularFirestoreCollection<any>;
+  listadoTurnosNODisponibles: any;
 
   constructor(private db: AngularFirestore) {
     this.listadoTurnosDisponiblesRef=db.collection<any>(this.dbpath, ref => ref.where('estado', '==', "disponible").orderBy('dia'));
     this.listadoTurnosDisponibles=this.listadoTurnosDisponiblesRef.valueChanges(this.dbpath);
+
+    this.listadoTurnosNODisponiblesRef=db.collection<any>(this.dbpath, ref => ref.where('estado', '!=', "disponible").orderBy('estado').orderBy('dia'));
+    this.listadoTurnosNODisponibles=this.listadoTurnosNODisponiblesRef.valueChanges(this.dbpath);
 
     this.mensajesRef=db.collection<any>(this.dbpath, ref => ref.orderBy('dia'));
     this.mensajes=this.mensajesRef.valueChanges(this.dbpath);
 
   }
 
+  obtenerTurnosConPaciente(){
+    return this.listadoTurnosNODisponibles;
+  }
+
   obtenerTurnosDisponibles(){
-    return this.listadoTurnosDisponibles;
+    return this.listadoTurnosNODisponibles;
   }
 
   getAll(){

@@ -59,9 +59,4 @@ export class BienvenidoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  downloadPDF(htmlId: string) {
-    this.pdfServ.PDFdownloadByHTMLid(htmlId, 'Portada');
-  }
-
-
 }
