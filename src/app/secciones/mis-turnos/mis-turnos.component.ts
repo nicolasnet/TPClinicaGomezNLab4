@@ -52,6 +52,8 @@ export class MisTurnosComponent implements OnInit, AfterViewInit {
       for (let index = 0; index < this.listadoTurnos.length; index++) {
         if(this.listadoTurnos[index].paciente.email == this.email){
           this.listadoFinal.push(this.listadoTurnos[index]);
+          //console.log(Object.keys(this.listadoTurnos[index].medico)[0]+" // "+Object.values(this.listadoTurnos[index].medico)[0]);
+           
         }        
       }
       this.dataSource = new MatTableDataSource(this.listadoFinal);
@@ -74,6 +76,7 @@ export class MisTurnosComponent implements OnInit, AfterViewInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue.trim().toLowerCase());
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   
@@ -137,6 +140,12 @@ export class MisTurnosComponent implements OnInit, AfterViewInit {
     encuestaNueva.turno = this.turnoEncuesta;
     this.encuestaServ.create(encuestaNueva);
     this.encuesta = false;
+  }
+
+  MostrarData(turno: Turno){
+    let texto = (Object.keys(turno.medico)[0]+" // "+Object.values(turno.medico)[0]).toString();
+    let objetoNuevo = {'descripcion': texto};
+    return objetoNuevo;
   }
 
 }

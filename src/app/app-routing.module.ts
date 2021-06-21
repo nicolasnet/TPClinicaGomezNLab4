@@ -10,8 +10,8 @@ import { RegistroComponent } from './pages/basic/registro/registro.component';
 const routes: Routes = [
   
   { path: 'bienvenido', component: BienvenidoComponent, data: {animation: 'HomePage'}},
-  { path: 'login', component: LoginComponent, data: {animation: 'AboutPage'}},
-  { path: 'registro', component: RegistroComponent, data: {animation: 'AboutPage'}},
+  { path: 'login', component: LoginComponent, data: {animation: 'Login'}},
+  { path: 'registro', component: RegistroComponent, data: {animation: 'Registro'}},
   { path: 'verificacion-email', component: EmailVerificationComponent},
   { path: 'verificacion-especialista', component: EspecialistaVerificationComponent},
   { path: 'secciones', loadChildren: () => import('./secciones/secciones.module').then(m => m.SeccionesModule)},

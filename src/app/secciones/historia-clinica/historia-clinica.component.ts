@@ -15,6 +15,7 @@ export class HistoriaClinicaComponent implements OnInit {
   usuario: any;
   listadoHistoriaClinica = new Array<any>();
   listadoFinal = new Array<any>();
+  imagen: any;
 
   constructor(private navegador: Router, private usuarioService: UsuariosFirebaseService, private historiaClinicaServ: HistoriaClinicaFirebaseService, private pdfServ: PDFCreatorService) {
     this.email = localStorage.getItem('usuario');
@@ -25,6 +26,7 @@ export class HistoriaClinicaComponent implements OnInit {
     //     })
     this.obtenerUsuarioLogueado();
     this.obtenerHistoriaClinicaDelPaciente();
+    
 
    }
 
@@ -34,6 +36,7 @@ export class HistoriaClinicaComponent implements OnInit {
   async obtenerUsuarioLogueado(){
     await this.usuarioService.obtenerUsuario(this.email)
     this.usuario = this.usuarioService.usuarioSeleccionado;
+    this.imagen = this.usuario.imgPerfil
   }
 
   async obtenerHistoriaClinicaDelPaciente(){
@@ -47,7 +50,7 @@ export class HistoriaClinicaComponent implements OnInit {
   }
 
   ImprimirPDF(){    
-    // this.pdfServ.PDFdownloadByHTMLid('historiaClinica', 'HistoriaClinica'+'_'+this.usuario.email);
+    this.pdfServ.PDFdownloadByHTMLid('historiaClinica', 'HistoriaClinica'+'_'+this.usuario.email);
     // this.pdfServ.paginado();
   }
 

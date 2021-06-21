@@ -22,9 +22,12 @@
 
 .icono{
     position:absolute;
-    left: 45%;
-    top: 10%;
+    left: 43%;
+    top: 1%;
     opacity: 30%;
+}
+.trasparente{
+  background: transparent;
 }
 
   /* .circular--portrait img{   
