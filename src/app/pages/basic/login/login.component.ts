@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   contraIngreso: string = "";
   listaUsuarios: any[];
   mostrar = false;
-  usuarioLogueado;
+  usuarioLogueado = new User();
 
 
   constructor(public firebaseService: AuthFirebaseService, private router: Router, private usuariosFire: UsuariosFirebaseService) { 
@@ -45,6 +45,13 @@ export class LoginComponent implements OnInit {
     if (user && user.emailVerified) {
       await this.usuariosFire.obtenerUsuario(user.email);
       this.usuarioLogueado = this.usuariosFire.usuarioSeleccionado;
+      if(this.usuarioLogueado.ingresos){
+        this.usuarioLogueado.ingresos.push(new Date())
+      }else{
+        this.usuarioLogueado.ingresos = new Array<Date>();
+        this.usuarioLogueado.ingresos.push(new Date())
+      }      
+      this.usuariosFire.update(this.usuariosFire.id, {ingresos: this.usuarioLogueado.ingresos});
       console.log(this.usuarioLogueado.role);
       if(this.usuarioLogueado.role == 'especialista'){
         console.log("entra en login para especialista");

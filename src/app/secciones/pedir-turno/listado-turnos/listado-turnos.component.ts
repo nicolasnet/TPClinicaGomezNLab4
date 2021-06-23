@@ -62,6 +62,7 @@ export class ListadoTurnosComponent implements OnInit, OnChanges {
       this.listaTurnosPorEspecialidad = new Array<Turno>();
       this.medicos = false;
       for (let index = 0; index < this.listaTurnos.length; index++) {
+        
          if(this.listaTurnos[index].especialidad == this.especialidadParaFiltrar.nombre){
            this.listaTurnosPorEspecialidad.push(this.listaTurnos[index]);
          }

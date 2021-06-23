@@ -17,20 +17,17 @@
             <ul class="list-group mb-3 card-body overflow-auto trasparente">
                 <li class="list-group-item d-flex justify-content-between lh-condensed elegido trasparente" *ngFor="let historiaClinica of listadoFinal">            
                     <mat-card >Turno: {{historiaClinica.turno.dia.toMillis() | date:'dd/MM/yyyy hh:mm a' }}</mat-card>
-                    <mat-card > Dr/a.: {{historiaClinica.turno.paciente.apellido}} {{historiaClinica.turno.paciente.nombre}}</mat-card>
+                    <mat-card > Dr/a.: {{historiaClinica.turno.medico.apellido}} {{historiaClinica.turno.medico.nombre}}</mat-card>
                     <mat-card >Especialidad: {{historiaClinica.turno.especialidad}}</mat-card>
                     <mat-card >Reseña Medica: {{historiaClinica.turno.comentarioMedico}}</mat-card>
                     <mat-card ><strong>Altura:</strong>  {{historiaClinica.altura}}<br> <strong>Peso:</strong> {{historiaClinica.peso}} <br> <strong>Temperatura:</strong> {{historiaClinica.temperatura}} <br><strong>Presion:</strong> {{historiaClinica.presion}} </mat-card>
-                    <mat-card >Otros: {{historiaClinica.otrosDatos}}</mat-card>
+                    <mat-card >Otros: {{historiaClinica.clave1}}: {{historiaClinica.valor1}}. {{historiaClinica.clave2}}: {{historiaClinica.valor2}}. {{historiaClinica.clave3}}: {{historiaClinica.valor3}}.</mat-card>
                 </li>
             </ul>
-        </div>
-        
+        </div>        
     </div>
-    
-    
-    
 </div>
+
 <ng-template #loading>
     <app-loading></app-loading>
   </ng-template>

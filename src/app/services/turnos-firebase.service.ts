@@ -35,7 +35,7 @@ export class TurnosFirebaseService {
   }
 
   obtenerTurnosDisponibles(){
-    return this.listadoTurnosNODisponibles;
+    return this.listadoTurnosDisponibles;
   }
 
   getAll(){

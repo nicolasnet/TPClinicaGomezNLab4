@@ -49,11 +49,11 @@ export class MisTurnosComponent implements OnInit, AfterViewInit {
     this.email = localStorage.getItem('usuario');
     this.turnosFireServ.obtenerTurnosConPaciente().subscribe(listado =>{        
       this.listadoTurnos=listado;
+      this.listadoFinal = new Array<Turno>();
       for (let index = 0; index < this.listadoTurnos.length; index++) {
         if(this.listadoTurnos[index].paciente.email == this.email){
           this.listadoFinal.push(this.listadoTurnos[index]);
-          //console.log(Object.keys(this.listadoTurnos[index].medico)[0]+" // "+Object.values(this.listadoTurnos[index].medico)[0]);
-           
+          //console.log(Object.keys(this.listadoTurnos[index].medico)[0]+" // "+Object.values(this.listadoTurnos[index].medico)[0]);           
         }        
       }
       this.dataSource = new MatTableDataSource(this.listadoFinal);
@@ -65,6 +65,7 @@ export class MisTurnosComponent implements OnInit, AfterViewInit {
    ngAfterViewInit() {
     
   }
+  
 
    ngOnInit(): void {
     this.forma = this.fb.group({
@@ -74,11 +75,13 @@ export class MisTurnosComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     console.log(filterValue.trim().toLowerCase());
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
   
   async obtenerUsuarioLogueado(){
     await this.usuarioService.obtenerUsuario(this.email)
@@ -102,8 +105,8 @@ export class MisTurnosComponent implements OnInit, AfterViewInit {
     console.log(turno);
     this.turnosFireServ.update(this.turnosFireServ.idTurnoSeleccionado, {estado: "disponible", paciente: ""} )
     this.router.navigate(['miperfil']);
-
   }
+
 
   Muestra(muestra: string, turno?: Turno){
     switch(muestra){
@@ -117,8 +120,7 @@ export class MisTurnosComponent implements OnInit, AfterViewInit {
         this.encuesta = !this.encuesta;
         this.turnoEncuesta = turno;
         break;
-    }
-    
+    }    
   }
 
   async Calificar(turno: Turno, texto: HTMLInputElement){
@@ -141,6 +143,7 @@ export class MisTurnosComponent implements OnInit, AfterViewInit {
     this.encuestaServ.create(encuestaNueva);
     this.encuesta = false;
   }
+
 
   MostrarData(turno: Turno){
     let texto = (Object.keys(turno.medico)[0]+" // "+Object.values(turno.medico)[0]).toString();

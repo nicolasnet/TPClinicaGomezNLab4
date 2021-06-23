@@ -26,8 +26,6 @@ export class HistoriaClinicaComponent implements OnInit {
     //     })
     this.obtenerUsuarioLogueado();
     this.obtenerHistoriaClinicaDelPaciente();
-    
-
    }
 
   ngOnInit(): void {
@@ -44,8 +42,7 @@ export class HistoriaClinicaComponent implements OnInit {
     this.listadoHistoriaClinica = this.historiaClinicaServ.hisotriaClinicaSeleccionada;
     for (let index = 0; index < this.listadoHistoriaClinica.length; index++) {
       const element = this.listadoHistoriaClinica[index].data();
-      this.listadoFinal.push(element);
-      
+      this.listadoFinal.push(element);      
     }
   }
 

@@ -15,7 +15,7 @@ export class CrearTurnosService {
   creaTurno(misHorarios: MisHorarios){
     // console.log("entra en crear turno 1")
     let now = new Date();
-    // now.setDate(now.getDate() + 1);
+    now.setDate(now.getDate() + 9);
 
     for (let index = 1; index <= 30; index++) {
       now.setDate(now.getDate() + 1);
@@ -36,13 +36,13 @@ export class CrearTurnosService {
             turnoNuevo.especialidad=misHorarios.especialidad;
             turnoNuevo.medico=misHorarios.usuario;
             turnoNuevo.estado = "disponible";
-            turnoNuevo.id = nuevoDia+misHorarios.usuario.email;
+            turnoNuevo.id = misHorarios.especialidad+nuevoDia+misHorarios.usuario.email;
             this.turnosFireServ.create(turnoNuevo);
             if(misHorarios.duracion==30){
               let dato = nuevoDia;
               dato.setHours(index, 30);
               turnoNuevo.dia = dato;
-              turnoNuevo.id = dato+misHorarios.usuario.email;
+              turnoNuevo.id = misHorarios.especialidad+nuevoDia+misHorarios.usuario.email;
               this.turnosFireServ.create(turnoNuevo);
             }      
           }

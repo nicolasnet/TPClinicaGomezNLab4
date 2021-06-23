@@ -20,8 +20,10 @@ export class User {
     especialidad?: Array<Especialidad>;
     verificacionEspec?: boolean;
     id?: string;
+    ingresos?: Array<Date>
 
     constructor(){
         this.especialidad = new Array<Especialidad>();
+        this.ingresos = new Array<Date>();
     }
 }

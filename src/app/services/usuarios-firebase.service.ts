@@ -38,7 +38,7 @@ export class UsuariosFirebaseService {
   async obtenerUsuario(email: string){
     await this.db.collection('/usuarios').ref.where('email', '==', email).get().then((responce)=>{
       this.usuarioSeleccionado = responce.docs[0].data();
-      // console.log(responce.docs[0].data());
+      this.id = responce.docs[0].id;
     });
   }
 
