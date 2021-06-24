@@ -59,21 +59,21 @@ El sistema presenta distintos perfiles de usuarios. El paciente, el especialista
 
 Para poder empezar el usuario paciente o profesional deberá registrarse en el sistema eligiendo el tipo de usuario.
 
-![registro1](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/registro1.png)
+![registro1](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/registro1.png)
 
 El usuario paciente debe completar con sus datos y dos imágenes, teniendo que validar su correo, una vez registrado, para poder ingresar al sistema.
 
-![registro1](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/registro2.png)
+![registro1](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/registro2.png)
 
 El usuario profesional debe completar con sus datos personales y sus especialidades. Para poder ingresar al sistema, su usuario deberá ser autorizado por un administrador.
 
-![registro2](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/registro3.png)
+![registro2](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/registro3.png)
 
 ### Iniciar sesión
 
 El usuario deberá ingresar sus credenciales y completar el captcha
 
-![login](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/login.png)
+![login](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/login.png)
 
 ### Acciones de usuarios
 
@@ -81,36 +81,36 @@ El usuario deberá ingresar sus credenciales y completar el captcha
 
 El usuario administrador, al ingresar al sistema podrá autorizar usuarios profesionales y dar da alta nuevos administradores.
 
-![autorizar](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/autorizar.png)
+![autorizar](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/autorizar.png)
 
-![adminalta](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/adminalta.png)
+![adminalta](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/adminalta.png)
 
 También podrá generar distintos tipos de informes y descargarlos a un documento.
 
-![informes](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/informes.png)
+![informes](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/informes.png)
 
 #### Paciente
 
 El usuario paciente podrá solicitar turnos seleccionando especialidad y profesional, eligiendo de un listado de turnos disponibles. El turno luego tendrá que ser aceptado por el profesional seleccionado.
 
-![turnos](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/turnos.png)
+![turnos](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/turnos.png)
 
 También tendrá disponible un listado con sus turnos. En el cual podrá ver el estado de sus turnos, ver reseñas o descargarlas.
 
-![misturnos](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/misturnos.png)
+![misturnos](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/misturnos.png)
 
 Y notificaciones correspondientes a sus turnos
 
-![notificaciones](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/notificaciones.png)
+![notificaciones](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/notificaciones.png)
 
 #### Profesional
 
 El usuario profesional podrá acceder a un listado con sus turnos para poder aceptarlos o rechazarlos. Y también para completar la reseña una vez atendido el paciente.
 
-![misturnos2](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/misturnos2.png)
+![misturnos2](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/misturnos2.png)
 
 Y también tendrá la posibilidad de administrar sus horarios, como así también configurar la duración de sus consultas.
 
-![horarios](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/horarios.png)
+![horarios](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/horarios.png)
 
-![duraciones](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/duraciones.png)
+![duraciones](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/duraciones.png)
