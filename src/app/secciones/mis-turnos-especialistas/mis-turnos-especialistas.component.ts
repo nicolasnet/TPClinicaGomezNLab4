@@ -10,6 +10,7 @@ import { HistoriaClinicaFirebaseService } from 'src/app/services/historia-clinic
 import { PDFCreatorService } from 'src/app/services/pdfcreator.service';
 import { TurnosFirebaseService } from 'src/app/services/turnos-firebase.service';
 import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.service';
+import { User } from 'src/app/clases/user'
 
 @Component({
   selector: 'app-mis-turnos-especialistas',
@@ -33,7 +34,7 @@ export class MisTurnosEspecialistasComponent implements OnInit, OnChanges {
   listadoHistoriaClinica = new Array<any>();
   listadoHistoriaClinicaFinal = new Array<any>();
   pacienteElegido;
-  pacienteSeleccionado: import("c:/Users/nicon/Archivos SSD/Lab4ClinicaTPFinal-GomezN/src/app/clases/user").User;
+  pacienteSeleccionado: User;
   
   
   
