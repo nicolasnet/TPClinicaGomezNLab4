@@ -14,7 +14,8 @@ Este proyecto fue realizado con fines academicos para la materia Laboratorio IV 
 
 El proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
-Está preparado para poder desplegarse en heroku. La versión actual puede encontrarse en el siguiente link. [link](https://lab4clinicatpfinal-gomezn.herokuapp.com/)
+Está preparado para poder desplegarse en `heroku`. La versión actual puede encontrarse en el siguiente [link](https://lab4clinicatpfinal-gomezn.herokuapp.com/)
+Posee una integracion con `FIREBASE` como base de datos. Y su estilo de diseño esta basado en [Angular Material](https://material.angular.io/)
 
 
 ## Acerca de mi
@@ -56,23 +57,23 @@ Tienen habilitado la seccion de mi perfil para ver sus datos personales registra
 
 #### Administrador
 
-El usuario administrador, al ingresar al sistema podrá autorizar usuarios profesionales y dar da alta nuevos administradores y usuarios del tipo Pacientes y Especialistas.
+El usuario administrador, al ingresar al sistema podrá autorizar usuarios profesionales y dar de alta nuevos administradores y usuarios del tipo Pacientes y Especialistas.
 
 ![autorizar](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/autorizar.png)
 
 ![altasadmin](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/altasadmin.png)
 
-También podrá generar distintos tipos de informes y descargarlos a un documento (PDF o CSV segun corresponda).
+También podrá generar distintos tipos de informes y descargarlos a un documento (`PDF` o `CSV` segun corresponda).
 
 ![informes](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/grafico.png)
 
 Por otro lado tiena la posibilidad de ver los turnos tomados y monitorear sus estados y cancelarlos de ser necesario.
 
-![informes](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/grafico.png)
+![turnostomados](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/turnostomados.png)
 
 Tambien esta habilitado a generar turnos para los pacientes registrados.
 
-![informes](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/pedirturno.png)
+![pedirturno](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/pedirturno.png)
 
 
 #### Paciente
@@ -87,7 +88,7 @@ El usuario paciente podrá solicitar turnos seleccionando especialidad y profesi
 
 ![turnos](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/turnos.png)
 
-También tendrá disponible un listado con sus turnos. En el cual podrá ver el estado de sus turnos con distintas acciones disponibles. Tambien puede descargar su listado de turnos en diversos formatos.
+También tendrá disponible un listado con sus turnos. En el cual podrá ver el estado de sus turnos con distintas acciones disponibles. Pudiendo descargar su listado de turnos en diversos formatos.
 
 ![misturnos](https://github.com/nicolasnet/TPClinicaGomezNLab4/blob/master/screenshots/misturnos.png)
 
