@@ -3,10 +3,11 @@ IMPORTANTE
 Sprint 2, cosas a tener en cuenta:
 sacar turno:
 (tener en cuenta template de input y output del 1er parcial)
-mostrar listado con boton por cada especialidad y con una imagen cada uno. Para las nuevas
-especialidades tener una por defecto.
+mostrar listado con boton por cada especialidad y con una imagen cada uno.
+Para las nuevas especialidades tener una por defecto.
 A elegir especialidad mostrar los 1ros 3 turnos libres.
-Al costado listado fav button, con listado de medicos con foto, al apretar filtra los turnos por ese especialista.
+Al costado listado fav button, con listado de medicos con foto,
+al apretar filtra los turnos por ese especialista.
 
 
 
@@ -18,7 +19,8 @@ Excel: datos de usuarios
 
 PDF de paciente en mi perfil. Dar a elegir la opcion de especialidad para crear PDF.
 
-Seccion paciente para especialista. Con Card mostrar todos los pacientes. Foto y peqeño texto con los ultimos 3 turnos.
+Seccion paciente para especialista. Con Card mostrar todos los pacientes.
+Foto y peqeño texto con los ultimos 3 turnos.
 Por cada paciente tener boton para obtener historia clinica de ese paciente.
 
 

@@ -1,0 +1,122 @@
+<app-navbar></app-navbar>
+
+<div class="col-sm-6" *ngIf="listadoFinal">
+    <mat-form-field appearance="outline">
+      <mat-label>Tipos de informes</mat-label>
+      <mat-select id="especialidad">
+        <mat-option (click)="generar('cantTurnosPorEspecialidad')">Turnos por especialidad</mat-option>
+        <mat-option (click)="generar('cantTurnosPorDia')">Turnos por dia</mat-option>
+        <mat-option (click)="generar('tablaUsuarios')">Listado Usuarios Ingresos</mat-option>
+      </mat-select>
+    </mat-form-field>                        
+  </div> 
+
+
+<div class="container" *ngIf="mostrar">
+    <div class="btnPDF">
+        Descargar: 
+        <button mat-button color="warn" (click)="ImprimirPDF()">PDF</button>
+    </div>
+
+    <div class="bar" [chart]="chart" id="grafico"></div>
+</div>
+
+<div id="tabla" hidden>
+    <h2 class="text-center">Lista de usuarios</h2>
+    Descargar: 
+    <button mat-button color="primary" (click)="exporter.exportTable('csv', {fileName: 'Lista de Usuarios'})">CSV</button>
+    <button mat-button color="accent" (click)="exporter.exportTable('txt', {fileName: 'Lista de Usuarios'})">TXT</button>
+    <div class="mat-elevation-z8" >
+        <mat-form-field >
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo Gomez" #input>
+        </mat-form-field>
+
+        <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" matSort>
+            
+            <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <td mat-cell *matCellDef="let row" [appColorTipoDeUsuario]="row"> {{row.nombre}} </td>
+            </ng-container>
+
+            
+            <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+            <td mat-cell *matCellDef="let row" [appColorTipoDeUsuario]="row"> {{row.apellido}} </td>
+            </ng-container>
+
+            
+            <ng-container matColumnDef="dni">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> DNI </th>
+            <td mat-cell *matCellDef="let row" [appColorTipoDeUsuario]="row"> {{row.dni}} </td>
+            </ng-container>
+
+            
+            <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </th>
+            <td mat-cell *matCellDef="let row" [appColorTipoDeUsuario]="row"> {{row.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef > Tipo </th>
+            <td mat-cell *matCellDef="let row" [appColorTipoDeUsuario]="row"> {{row | tipoUsuarios}} </td>
+            </ng-container>
+            
+
+            <ng-container matColumnDef="ultimoLogin">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ultimo Ingreso </th>
+            <td mat-cell *matCellDef="let row" [appColorTipoDeUsuario]="row"> {{row.ingresos[row.ingresos.length-1].toMillis() | date:'dd/MM/yyyy hh:mm a'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="todosLosLogin">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Todos los Ingresos </th>
+                <td mat-cell *matCellDef="let row"> 
+                    <button mat-raised-button color="primary" (click)="TodosLosIngresos(row)">Ver todos</button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            
+            <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+
+</div>
+
+<div id="tablaIngresos" hidden>
+    <h2 class="text-center">Lista de usuarios</h2>
+    Descargar: 
+    <button mat-button color="primary" (click)="exporterIngresos.exportTable('csv', {fileName: 'Lista de Usuarios'})">CSV</button>
+    <button mat-button color="accent" (click)="exporterIngresos.exportTable('txt', {fileName: 'Lista de Usuarios'})">TXT</button>
+    <div class="mat-elevation-z8" >
+
+        <table mat-table matTableExporter [dataSource]="dataSourceIngresos" #exporterIngresos="matTableExporter" >
+            
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef > Nombre </th>
+                <td mat-cell *matCellDef="let row" > {{usuarioElegido.nombre}} </td>
+            </ng-container>
+                
+            <ng-container matColumnDef="apellido">
+                <th mat-header-cell *matHeaderCellDef > Apellido </th>
+                <td mat-cell *matCellDef="let row" > {{usuarioElegido.apellido}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="todosLosLogin">
+                <th mat-header-cell *matHeaderCellDef > Ingresos </th>
+                <td mat-cell *matCellDef="let row" > {{row.toMillis() | date:'dd/MM/yyyy hh:mm a'}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsIngresos"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsIngresos;"></tr>           
+            
+        </table>
+
+    </div>
+</div>

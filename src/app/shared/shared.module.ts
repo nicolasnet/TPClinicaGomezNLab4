@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartModule } from 'angular-highcharts';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -58,7 +59,8 @@ const materialFormModule =[
   MatGridListModule,
   MatTableExporterModule,
   FormsModule,
-  ReactiveFormsModule  
+  ReactiveFormsModule,
+  ChartModule
 ]
 
 const directivasGroup =[

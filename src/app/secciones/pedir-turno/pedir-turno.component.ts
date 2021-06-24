@@ -4,6 +4,7 @@ import { Turno } from 'src/app/clases/turno';
 import { TurnosFirebaseService } from 'src/app/services/turnos-firebase.service';
 import { Router } from '@angular/router';
 import { UsuariosFirebaseService } from 'src/app/services/usuarios-firebase.service';
+import { User } from 'src/app/clases/user';
 
 @Component({
   selector: 'app-pedir-turno',
@@ -18,14 +19,18 @@ export class PedirTurnoComponent implements OnInit {
   listaTurnos: Turno[];
   email: string;
   usuario: any;
+  listaUsuarios: any[];
+  turnoElegido: Turno;
 
   constructor(private turnosFireServ: TurnosFirebaseService, private router: Router,private usuarioService: UsuariosFirebaseService) {
     this.turnosFireServ.obtenerTurnosDisponibles().subscribe(listado =>{        
       this.listaTurnos=listado;
       this.dataSource = new MatTableDataSource(this.listaTurnos);
+    }); 
+
+    this.usuarioService.getAllPacientes().subscribe(listado =>{
+      this.listaUsuarios=listado;     
     });
-    this.email = localStorage.getItem('usuario');
-    this.obtenerUsuarioLogueado();
     
    }
 
@@ -37,17 +42,18 @@ export class PedirTurnoComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  async PedirTurno(turno: Turno){
-    await this.turnosFireServ.obtenerTurnoPorId(turno.id);
-    console.log(turno);
-    this.turnosFireServ.update(this.turnosFireServ.idTurnoSeleccionado, {estado: "ocupado", paciente: this.usuario} )
-    this.router.navigate(['misturnos']);
-
+  PedirTurno(turno: Turno){
+    (<HTMLInputElement>document.getElementById("listaPacientes")).hidden = false;
+    (<HTMLInputElement>document.getElementById("listaTurnos")).hidden = true;
+    this.turnoElegido = turno;
   }
 
-  async obtenerUsuarioLogueado(){
-    await this.usuarioService.obtenerUsuario(this.email)
-    this.usuario = this.usuarioService.usuarioSeleccionado;
+  async AsigarTurno(usuario: User){
+    await this.turnosFireServ.obtenerTurnoPorId(this.turnoElegido.id);
+    console.log(this.turnoElegido);
+    this.turnosFireServ.update(this.turnosFireServ.idTurnoSeleccionado, {estado: "ocupado", paciente: usuario})
+    this.router.navigate(['']);
   }
+
 
 }

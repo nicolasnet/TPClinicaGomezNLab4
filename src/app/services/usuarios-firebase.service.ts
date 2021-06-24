@@ -14,10 +14,15 @@ export class UsuariosFirebaseService {
   id: string;
   role: string;
   usuarioSeleccionado: any;
+  usuariosRefPacientes: AngularFirestoreCollection<any>;
+  usuariosPacientes: Observable<any[]>;
 
   constructor(private db: AngularFirestore) {
     this.usuariosRef=db.collection<any>(this.dbpath, ref => ref.orderBy('apellido'));
     this.usuarios=this.usuariosRef.valueChanges(this.dbpath);
+
+    this.usuariosRefPacientes=db.collection<any>(this.dbpath, ref => ref.where('role', '==', 'paciente').orderBy('apellido'));
+    this.usuariosPacientes=this.usuariosRefPacientes.valueChanges(this.dbpath);
   }
 
 
@@ -45,6 +50,10 @@ export class UsuariosFirebaseService {
 
   getAll(){
     return this.usuarios;
+  }
+
+  getAllPacientes(){
+    return this.usuariosPacientes;
   }
 
   create(mensaje: User): any{

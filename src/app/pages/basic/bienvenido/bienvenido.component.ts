@@ -3,6 +3,10 @@ import { Observable } from 'rxjs';
 import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 import { PDFCreatorService } from 'src/app/services/pdfcreator.service';
 
+import { Chart } from 'angular-highcharts';
+import { Options } from 'highcharts';
+import { EspecialidadesFireService } from 'src/app/services/especialidades-fire.service';
+
 @Component({
   selector: 'app-bienvenido',
   templateUrl: './bienvenido.component.html',
@@ -51,12 +55,23 @@ export class BienvenidoComponent implements OnInit {
 
   iniciado: boolean
   public user$: Observable<any> = this.authSvc.firebaseAuth.user;
+  listaEspecialidades: any[];
+  barChart: Options;
+  chart: Chart;
+  listadosEspecialidadesNombre = new Array<string>();
+  listadoFinal = new Array<string>();
+  mostrar: boolean;
 
-  constructor(private authSvc: AuthFirebaseService, private pdfServ: PDFCreatorService) {
+  
+
+  constructor(private authSvc: AuthFirebaseService) {    
     
   }
 
   ngOnInit(): void {
   }
+  
+
 
 }
+

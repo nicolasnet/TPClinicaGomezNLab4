@@ -1,8 +1,9 @@
 <app-navbar></app-navbar>
-<mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Nicolas" #input>
-</mat-form-field>
+<div id="listaTurnos">
+  <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Nicolas" #input>
+  </mat-form-field>
   
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
@@ -42,3 +43,12 @@
       <td class="mat-cell" colspan="4">No se encuentran coincidencias con: "{{input.value}}"</td>
     </tr>
   </table>
+</div>
+
+<div id="listaPacientes" hidden>
+  <ul class="list-group mb-3 card-body overflow-auto" style="height: 300px;" #scrollMe  [scrollTop]="scrollMe">
+    <li type="button" class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let usuario of listaUsuarios; let i=index">            
+        <mat-card (click)="AsigarTurno(usuario)"> Dr/a.: {{usuario.apellido}} {{usuario.nombre}}  <button mat-fab color="primary" class="circular--portrait" > <img  [src]=usuario.imgPerfil > </button></mat-card>         
+    </li>
+  </ul>
+</div>

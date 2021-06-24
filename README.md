@@ -1,7 +1,3 @@
-# Lab4ClinicaTPFinalGomezN
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
-
 ## Development server
 
 [Link](https://lab4clinicatpfinal-gomezn.herokuapp.com/)
@@ -30,22 +26,91 @@ Se puede filtrar por `Especialidad` y luego por `Especialista`.
 
 Se listan los turnos solicitados con su informacion y acciones correspondientes.
 
+# Lab4ClinicaTPFinalGomezN
+
+<!-- Contenido -->
+## Contenido
+
+* [Acerca del proyecto](#acerca-del-proyecto)
+* [Acerca de mi](#acerca-de-mi)
+* [Cómo funciona](#cómo-funciona)
+* - [Registro](#registro)
+* - [Iniciar sesión](#iniciar-sesión)
+* - [Acciones de usuarios](#acciones-de-usuarios)
+## Acerca del proyecto
+
+Este proyecto fue realizado con fines academicos para la materia Laboratorio IV en la UTN (Universidad Tecnologica Nacional) de Argetina.
+
+El proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+
+Está preparado para poder desplegarse en heroku. La versión actual puede encontrarse en el siguiente link. (https://lab4clinicatpfinal-gomezn.herokuapp.com/)
 
 
-<!-- Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Acerca de mi
 
-## Build
+Mi nombre es Gomez Nicolas Rodrigo soy contador público recibido de la UBA (Universidadd de Buenos Aires) y aficionado a la tecnologia, en estos momentos soy estudiante de la UTNFra. Actualmente estoy cursando la carrera de TECNICATURA SUPERIOR EN PROGRAMACIÓN
+(http://www.sistemas-utnfra.com.ar/#/home)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Cómo funciona
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Registro
+El sistema presenta distintos perfiles de usuarios. El paciente, el especialista y el administrador.
 
-## Running end-to-end tests
+Para poder empezar el usuario paciente o profesional deberá registrarse en el sistema eligiendo el tipo de usuario.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+![registro1](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/registro1.png)
 
-## Further help
+El usuario paciente debe completar con sus datos y dos imágenes, teniendo que validar su correo, una vez registrado, para poder ingresar al sistema.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page. -->
+![registro1](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/registro2.png)
+
+El usuario profesional debe completar con sus datos personales y sus especialidades. Para poder ingresar al sistema, su usuario deberá ser autorizado por un administrador.
+
+![registro2](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/registro3.png)
+
+### Iniciar sesión
+
+El usuario deberá ingresar sus credenciales y completar el captcha
+
+![login](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/login.png)
+
+### Acciones de usuarios
+
+#### Administrador
+
+El usuario administrador, al ingresar al sistema podrá autorizar usuarios profesionales y dar da alta nuevos administradores.
+
+![autorizar](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/autorizar.png)
+
+![adminalta](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/adminalta.png)
+
+También podrá generar distintos tipos de informes y descargarlos a un documento.
+
+![informes](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/informes.png)
+
+#### Paciente
+
+El usuario paciente podrá solicitar turnos seleccionando especialidad y profesional, eligiendo de un listado de turnos disponibles. El turno luego tendrá que ser aceptado por el profesional seleccionado.
+
+![turnos](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/turnos.png)
+
+También tendrá disponible un listado con sus turnos. En el cual podrá ver el estado de sus turnos, ver reseñas o descargarlas.
+
+![misturnos](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/misturnos.png)
+
+Y notificaciones correspondientes a sus turnos
+
+![notificaciones](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/notificaciones.png)
+
+#### Profesional
+
+El usuario profesional podrá acceder a un listado con sus turnos para poder aceptarlos o rechazarlos. Y también para completar la reseña una vez atendido el paciente.
+
+![misturnos2](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/misturnos2.png)
+
+Y también tendrá la posibilidad de administrar sus horarios, como así también configurar la duración de sus consultas.
+
+![horarios](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/horarios.png)
+
+![duraciones](https://github.com/federicoferniot/tp_clinica_online/blob/main/screenshots/duraciones.png)

@@ -164,6 +164,8 @@ export class RegistroComponent implements OnInit {
     usuarioNuevo.edad = this.forma.get('edad').value;
     usuarioNuevo.dni = this.forma.get('dni').value;
     usuarioNuevo.imgPerfil = this.forma.get('imgPerfil').value;
+    usuarioNuevo.ingresos = new Array<Date>();
+    usuarioNuevo.ingresos.push(new Date());
     if(this.paciente){
       usuarioNuevo.os = this.forma.get('OS').value;
       usuarioNuevo.imgFrente = this.forma.get('imgFrente').value;

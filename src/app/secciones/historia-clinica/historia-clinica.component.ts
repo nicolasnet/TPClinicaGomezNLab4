@@ -16,6 +16,7 @@ export class HistoriaClinicaComponent implements OnInit {
   listadoHistoriaClinica = new Array<any>();
   listadoFinal = new Array<any>();
   imagen: any;
+  now: Date;
 
   constructor(private navegador: Router, private usuarioService: UsuariosFirebaseService, private historiaClinicaServ: HistoriaClinicaFirebaseService, private pdfServ: PDFCreatorService) {
     this.email = localStorage.getItem('usuario');
@@ -38,6 +39,7 @@ export class HistoriaClinicaComponent implements OnInit {
   }
 
   async obtenerHistoriaClinicaDelPaciente(){
+    this.now = new Date(),
     await this.historiaClinicaServ.obtenerHistoriaClinicaConEmailPaciente(this.email);
     this.listadoHistoriaClinica = this.historiaClinicaServ.hisotriaClinicaSeleccionada;
     for (let index = 0; index < this.listadoHistoriaClinica.length; index++) {
