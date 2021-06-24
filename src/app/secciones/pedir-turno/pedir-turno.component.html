@@ -45,10 +45,10 @@
   </table>
 </div>
 
-<div id="listaPacientes" hidden>
-  <ul class="list-group mb-3 card-body overflow-auto" style="height: 300px;" #scrollMe  [scrollTop]="scrollMe">
+<div id="listaPacientes" class="listaPacientes" hidden>
+  <ul class="list-group mb-3 card-body overflow-auto" style="height: 750;" #scrollMe  [scrollTop]="scrollMe">
     <li type="button" class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let usuario of listaUsuarios; let i=index">            
-        <mat-card (click)="AsigarTurno(usuario)"> Dr/a.: {{usuario.apellido}} {{usuario.nombre}}  <button mat-fab color="primary" class="circular--portrait" > <img  [src]=usuario.imgPerfil > </button></mat-card>         
+        <mat-card (click)="AsigarTurno(usuario)" class="card"> <strong>Paciente:</strong> {{usuario.apellido}} {{usuario.nombre}} <strong>DNI:</strong> {{usuario.dni}} <strong>EMAIL:</strong> {{usuario.email}} <button mat-fab color="primary" class="circular--portrait" > <img  [src]=usuario.imgPerfil > </button></mat-card>         
     </li>
   </ul>
 </div>
